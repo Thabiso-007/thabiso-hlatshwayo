@@ -49,7 +49,7 @@ export default function Home() {
                         <Link href={'https://www.linkedin.com/in/thabiso-hlatshwayo-8a4079198/'}><AiFillLinkedin size={20} /></Link>
                     </div>
                     <div className={'rounded-full shadow-lg shadow-gray-700 p-6 cursor-pointer hover:scale-110 ease-in duration-75'}>
-                        <Link href={'https://github.com/Thabiso-Timzo'}><AiFillGithub size={20}/></Link>
+                        <Link href={'https://github.com/Thabiso-007'}><AiFillGithub size={20}/></Link>
                     </div>
                     <div className={'rounded-full shadow-lg shadow-gray-700 p-6 cursor-pointer hover:scale-110 ease-in duration-75'}>
                         <Link href={'mailto:thabiso.hlatshwayo24@gmail.com'}><AiFillMail size={20}/></Link>

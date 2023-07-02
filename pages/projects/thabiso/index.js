@@ -46,7 +46,7 @@ const Index = () => {
             </p>
             <div className={'mt-10'}>
               <Link Link 
-                href={'https://github.com/Thabiso-Timzo/thabiso-hlatshwayo'}
+                href={'https://github.com/Thabiso-007/thabiso-hlatshwayo'}
                 className={'px-6 py-3 text-blue-100 no-underline bg-blue-500 rounded hover:bg-blue-600 hover:underline hover:text-blue-200'}
               >
                 Source Code
@@ -54,7 +54,7 @@ const Index = () => {
             </div>
             <div className={'mt-10'}>
               <Link Link 
-                href={'https://thabiso-hlatshwayo.vercel.app/'}
+                href={'https://thabiso-hlatshwayo-virid.vercel.app/'}
                 className={'px-6 py-3 text-blue-100 no-underline bg-blue-500 rounded hover:bg-blue-600 hover:underline hover:text-blue-200'}
               >
                 View project
