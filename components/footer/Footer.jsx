@@ -72,7 +72,7 @@ const Footer = () => {
           <ul>
             <p className={'text-[#D4AF37] font-bold text-2xl pb-4'}>Project links</p>
             <li className={'text-grey-500 text-md pb-2 text-semibold hover:text-[#D4AF37] cursor-pointer'}>
-              <Link href={'/projects/gude'}>Express store</Link>
+              <Link href={'/projects/express-api'}>Express store API</Link>
             </li>
             <li className={'text-grey-500 text-md pb-2 text-semibold hover:text-[#D4AF37] cursor-pointer'}>
               <Link href={'/projects/calculator'}>Calculator</Link>
