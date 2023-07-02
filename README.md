@@ -1,4 +1,4 @@
-This bootstrap is based on this project, please click me. :) [Website link](https://thabiso-hlatshwayo.vercel.app/).
+This bootstrap is based on this project, please click me. [Website link](https://thabiso-hlatshwayo-virid.vercel.app/).
 
 Below you will find some information on how to perform common tasks.
 
@@ -95,20 +95,16 @@ thabiso-hlatshwayo
     | -- docs
       | -- express
         | -- index.js
-      | -- trivia 
-        | -- index.js
     | -- projects
       | -- contacts
         | -- index
-      | -- express
+      | -- express-store-api
         | -- index.js
       | -- fyur 
         | --- index.js
-      | -- movie
+      | -- calculator
         | -- index.js
       | -- thabiso
-        | -- index.js
-      | -- trivia
         | -- index.js
     | -- _app.js
     | -- 404.js
