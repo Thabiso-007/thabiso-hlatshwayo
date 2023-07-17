@@ -25,6 +25,10 @@ import TypeScript from '../components/typescript/TypeScript'
 import Django from '../components/django/Django'
 import SQLAlchemy from '../components/sqlalchemy/SQLAlchemy'
 import Vue from '../components/vue/Vue'
+import SpringBoot from '../components/spring-boot/SpringBoot'
+import Java from '../components/java/Java'
+import GraphQL from '../components/graphql/GraphQL'
+import Rest from '../components/rest/Rest'
 
 const Skills = () => {
   return (
@@ -52,17 +56,20 @@ const Skills = () => {
                     <NextJS />
                     <Redux />
                     <Python />
-                    {/* <Flask />
-                    <Django />
-                    <SQLAlchemy /> */}
+                    <Flask />
+                    <SQLAlchemy /> 
                     <NodeJSX />
                     <ExpressJS />
+                    <SpringBoot />
+                    <Java />
                     <Mongo />
                     <MySQL />
-                    <PostgreSQL />
+                    <GraphQL />
+                    <Rest />
+                    {/* <PostgreSQL /> */}
                     <Tailwind />
-                    <Amazon />
-                    <Docker />
+                    {/* <Amazon />
+                    <Docker /> */}
                 </div>
             </div>
         </div>
