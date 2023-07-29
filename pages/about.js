@@ -27,15 +27,16 @@ const About = () => {
             I am excited to learn about different technology platforms. 
             I have always had a fascination with technology and working with computers. 
             After high school, I began studying JavaScript, my first programming language. 
-            After six months of tertiary education, I finally incorporate JavaScript into HTML. 
+            After six months of tertiary education, I finally incorporated JavaScript into HTML. 
             That is where my interest in programming began.
           </p>
           <p className={'py-2 text-gray-100'}>
-            Following tertiary education, I enrolled in a bootcamp (HyperionDev) to 
-            learn how to create software in Java and Python. After being captivated 
-            by how powerful programming could be, I was immediately drawn to learning more.
-            I finished my internships at Addmore Digital, where we worked on a variety of 
-            projects using MERN Stack.
+            Following my tertiary education, 
+            I enrolled in a bootcamp (HyperionDev) to learn how to create software in Java and Python. 
+            After being captivated by the immense power of programming, 
+            I was immediately drawn to learning more. 
+            I completed my internships at Addmore Digital, 
+            where we worked on various projects using the MERN Stack.
           </p>
         </div>
         <div className={'w-full h-auto shadow-xl shadow-black rounded-xl flex items-center justify-center p-4 hover:scale-105 ease-in duration-300'}>
