@@ -35,8 +35,6 @@ const About = () => {
             I enrolled in a bootcamp (HyperionDev) to learn how to create software in Java and Python. 
             After being captivated by the immense power of programming, 
             I was immediately drawn to learning more. 
-            I completed my internships at Addmore Digital, 
-            where we worked on various projects using the MERN Stack.
           </p>
         </div>
         <div className={'w-full h-auto shadow-xl shadow-black rounded-xl flex items-center justify-center p-4 hover:scale-105 ease-in duration-300'}>
