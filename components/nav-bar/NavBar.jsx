@@ -13,7 +13,7 @@ import {
 } from 'react-icons/ai'
 
 import logo from '../../public/assets/logo/logo.png'
-// 1:58:37
+
 const NavBar = () => {
   const [nav, setNav] = useState(false)
   const [shadow, setShadow] = useState(false)

@@ -4,8 +4,6 @@ import React from 'react'
 import Link from 'next/link'
 import { BsFillArrowLeftCircleFill } from 'react-icons/bs'
 
-import NavBar from '../../../components/nav-bar/NavBar'
-import Footer from '../../../components/footer/Footer'
 import react from '../../../public/assets/skills/react.png'
 import redux from '../../../public/assets/skills/redux.png'
 import mongo from '../../../public/assets/skills/mongodb.png'
@@ -77,7 +75,6 @@ const Index = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   )
 }
