@@ -24,9 +24,9 @@ const Skills = () => {
                                 <div className={'m-auto'}>
                                     <Image
                                         src={item.image}
-                                        alt='skill-image' 
-                                        width={item.weight} 
-                                        height={item.height} 
+                                        alt='' 
+                                        width={'64'} 
+                                        height={'64'} 
                                     />
                                 </div>
                                 <div className={'flex flex-col items-center justify-center'}>
