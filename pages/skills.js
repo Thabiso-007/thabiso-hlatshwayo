@@ -1,8 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
-import Image from 'next/image'
 
-import { data } from '../utils/data' 
+import TeckStack from '../components/skills/TeckStack'
 
 const Skills = () => {
   return (
@@ -18,23 +17,7 @@ const Skills = () => {
                 <p className={'tracking-widest uppercase text-[#D4AF37] text-xl text-center font-bold'}>Skills</p>
                 <h2 className={'py-7 text-center'}>What I can do</h2>
                 <div className={'grid md:grid-cols-2 lg:grid-cols-5 gap-8'}>
-                    {data.map((item) => (
-                        <div  key={item.id} className={'p-6 shadow-xl rounded-xl hover:scale-105 ease-in duration-300'}>
-                            <div className={'grid grid-cols-2 gap-4 justify-center items-center'}>
-                                <div className={'m-auto'}>
-                                    <Image
-                                        src={item.image}
-                                        alt='' 
-                                        width={'64'} 
-                                        height={'64'} 
-                                    />
-                                </div>
-                                <div className={'flex flex-col items-center justify-center'}>
-                                    <h3>{item.name}</h3>
-                                </div>
-                            </div>
-                         </div>
-                    ))}
+                    <TeckStack />
                 </div>
             </div>
         </div>
