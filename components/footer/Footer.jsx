@@ -70,7 +70,7 @@ const Footer = () => {
         </div>
         <div className={'p-5'}>
           <ul>
-            <p className={'text-[#D4AF37] font-bold text-2xl pb-4'}>Project links</p>
+            <p className={'text-[#D4AF37] font-bold text-2xl pb-4'}>Projects</p>
             <li className={'text-grey-500 text-md pb-2 text-semibold hover:text-[#D4AF37] cursor-pointer'}>
               <Link href={'/projects/express-api'}>Express store API</Link>
             </li>
@@ -82,6 +82,9 @@ const Footer = () => {
             </li>
             <li className={'text-grey-500 text-md pb-2 text-semibold hover:text-[#D4AF37] cursor-pointer'}>
               <Link href={'/projects/thabiso'}>Thabiso</Link>
+            </li>
+            <li className={'text-grey-500 text-md pb-2 text-semibold hover:text-[#D4AF37] cursor-pointer'}>
+              <Link href={'/projects/weather-forecast'}>Weather-forecast</Link>
             </li>
           </ul>
         </div>
