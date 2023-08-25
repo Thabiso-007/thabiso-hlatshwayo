@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import React, { useEffect, useState} from 'react'
 import { IoIosArrowDropupCircle } from 'react-icons/io'
-import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
+
+import { links, socials, projects } from '../../utils/footer'
 
 const Footer = () => {
   const [toTop, setToTop] = useState(false)
@@ -41,64 +42,37 @@ const Footer = () => {
               Thabiso <span className={'text-[#D4AF37]'}>Hlatshwayo</span>
             </p>
             <div className={'flex gap-6 pb-5'}>
-              <Link href={'https://www.instagram.com/thabiso.timzo.dev/'}><FaInstagram className={'text-2xl cursor-pointer hover:text-[#D4AF37]'} /></Link>
-              <Link href={'https://twitter.com/thabiso_dev'}><FaTwitter className={'text-2xl cursor-pointer hover:text-[#D4AF37]'} /></Link>
-              <Link href={'https://github.com/Thabiso-007'}><FaGithub className={'text-2xl cursor-pointer hover:text-[#D4AF37]'} /></Link>
-              <Link href={'https://www.linkedin.com/in/thabiso-hlatshwayo-8a4079198/'}><FaLinkedin className={'text-2xl cursor-pointer hover:text-[#D4AF37]'} /></Link>
+              {socials.map(social => (
+                <div key={social.id}>
+                  <Link href={social.url}>
+                    <social.icon className={'text-2xl cursor-pointer hover:text-[#D4AF37]'} />
+                  </Link>
+                </div>
+              ))}
+              
             </div>
           </ul>      
         </div>
         <div className={'p-5'}>
           <ul>
             <p className={'text-[#D4AF37] font-bold text-2xl pb-4'}>Links</p>
-            <li className={'text-grey-500 text-md pb-2 text-semibold hover:text-[#D4AF37] cursor-pointer'}>
-              <Link href={'/'}>Home</Link>
-            </li>
-            <li className={'text-grey-500 text-md pb-2 text-semibold hover:text-[#D4AF37] cursor-pointer'}>
-              <Link href={'/about'}>About</Link>
-            </li>
-            <li className={'text-grey-500 text-md pb-2 text-semibold hover:text-[#D4AF37] cursor-pointer'}>
-              <Link href={'/skills'}>Skills</Link>
-            </li>
-            <li className={'text-grey-500 text-md pb-2 text-semibold hover:text-[#D4AF37] cursor-pointer'}>
-              <Link href={'/projects'}>Projects</Link>
-            </li>
-            <li className={'text-grey-500 text-md pb-2 text-semibold hover:text-[#D4AF37] cursor-pointer'}>
-              <Link href={'/contact'}>Contacts</Link>
-            </li>
+            {links.map(link => (
+              <li key={link.id} className={'text-grey-500 text-md pb-2 text-semibold hover:text-[#D4AF37] cursor-pointer'}>
+                <Link href={link.path}>{link.name}</Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div className={'p-5'}>
           <ul>
             <p className={'text-[#D4AF37] font-bold text-2xl pb-4'}>Projects</p>
-            <li className={'text-grey-500 text-md pb-2 text-semibold hover:text-[#D4AF37] cursor-pointer'}>
-              <Link href={'/projects/express-api'}>Express store API</Link>
-            </li>
-            <li className={'text-grey-500 text-md pb-2 text-semibold hover:text-[#D4AF37] cursor-pointer'}>
-              <Link href={'/projects/calculator'}>Calculator</Link>
-            </li>
-            <li className={'text-grey-500 text-md pb-2 text-semibold hover:text-[#D4AF37] cursor-pointer'}>
-              <Link href={'/projects/fyur'}>Fyur</Link>
-            </li>
-            <li className={'text-grey-500 text-md pb-2 text-semibold hover:text-[#D4AF37] cursor-pointer'}>
-              <Link href={'/projects/thabiso'}>Thabiso</Link>
-            </li>
-            <li className={'text-grey-500 text-md pb-2 text-semibold hover:text-[#D4AF37] cursor-pointer'}>
-              <Link href={'/projects/weather-forecast'}>Weather-forecast</Link>
-            </li>
+            {projects.map(project => (
+              <li key={project.id} className={'text-grey-500 text-md pb-2 text-semibold hover:text-[#D4AF37] cursor-pointer'}>
+                <Link href={project.path}>{project.name}</Link>
+              </li>
+            ))}
           </ul>
         </div>
-        {/* <div className={'p-5'}>
-          <ul>
-            <p className={'text-[#D4AF37] font-bold text-2xl pb-4'}>API Documentation</p>
-            <li className={'text-grey-500 text-md pb-2 text-semibold hover:text-[#D4AF37] cursor-pointer'}>
-              <Link href={'/docs/express'}>Express API Documentation</Link>
-            </li>
-            <li className={'text-grey-500 text-md pb-2 text-semibold hover:text-[#D4AF37] cursor-pointer'}>
-              <Link href={'/docs/trivia'}>Trivia API Documentation</Link>
-            </li>
-          </ul>
-        </div> */}
       </div>
       <div className={'flex flex-col justify-center items-center text-center p-5 bg-slate-800'}>
         <p className={'font-bold'}>Copyright © {new Date().getFullYear()} Thabiso Hlatshwayo</p> 
