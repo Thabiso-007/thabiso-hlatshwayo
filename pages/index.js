@@ -17,7 +17,7 @@ export default function Home() {
         <link rel="icon" href="/logo.png" />
       </Head>
       <div className={'h-20'}></div>
-      <div className={'w-full h-screen text-center'}>
+      <div className={'w-full h-fit text-center'}>
         <div className={'max-w-[1240px] w-full h-full mx-auto p-2 flex justify-center items-center'}>
             <div className={''}>
                 <p className={'uppercase text-sm tracking-widest text-[#D4AF37]'}>Teams and dreams may coexist.</p>
