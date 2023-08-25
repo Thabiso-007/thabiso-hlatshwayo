@@ -12,7 +12,7 @@ const Skills = () => {
             <link rel="icon" href="/logo.png" />
         </Head>
         <div className={'h-40'}></div>
-        <div className={'w-full lg:h-screen p-10 mt-20'}>
+        <div className={'w-full lg:h-screen p-10 mt-20 mb-10'}>
             <div className={'max-w-[1240px] flex flex-col justify-center h-full'}>
                 <p className={'tracking-widest uppercase text-[#D4AF37] text-xl text-center font-bold'}>Skills</p>
                 <h2 className={'py-7 text-center'}>What I can do</h2>
