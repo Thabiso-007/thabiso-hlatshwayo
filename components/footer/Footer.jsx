@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React, { useEffect, useState} from 'react'
 import { IoIosArrowDropupCircle } from 'react-icons/io'
 
-import { links, socials, projects } from '../../utils/footer'
+import { links, socials, projects } from '../../utils/links'
 
 const Footer = () => {
   const [toTop, setToTop] = useState(false)
