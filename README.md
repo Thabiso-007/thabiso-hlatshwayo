@@ -4,9 +4,7 @@ Below you will find some information on how to perform common tasks.
 
 ## Introduction
 
-```
 I have created a straightforward website that serves as a platform for me to discuss my achievements, exhibit my abilities, and showcase the projects I have completed.
-```
 
 ## Installing the project
 
