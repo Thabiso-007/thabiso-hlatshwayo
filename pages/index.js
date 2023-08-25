@@ -28,11 +28,25 @@ export default function Home() {
                     A Full-Stack, Front-end, Back-end Developer 
                 </h2>
                 <p className={'py-4 text-white max-w-[70%] m-auto'}>
-                    Teamwork is the ability to collaborate with others to achieve a common goal. 
-                    It is the ability to align a person's successes with organizational goals. 
-                    It is by far the most effective fuel for ordinary people to achieve extraordinary results. 
-                    I am a developer with exceptional and successful projects. 
-                    Begin by browsing through all of the pages to learn more about myself.
+                    As a developer with exceptional and successful projects, 
+                    I understand the importance of teamwork in achieving extraordinary results. 
+                    Throughout my career, I have witnessed firsthand how collaboration and aligning 
+                    individual successes with organizational goals can lead to remarkable achievements.
+                </p>
+                <p className={'py-4 text-white max-w-[70%] m-auto'}>
+                    Teamwork brings together diverse perspectives, skills, and experiences, 
+                    creating a synergy that propels us towards our common objective. By pooling our 
+                    talents and working towards a shared goal, we can tap into each team member's strengths 
+                    and compensate for any weaknesses. This collaborative effort fosters innovation, problem-solving, 
+                    and ultimately leads to superior outcomes.
+                </p>
+                <p className={'py-4 text-white max-w-[70%] m-auto'}>
+                    In my journey as a developer, I have actively sought opportunities to collaborate with others. 
+                    Whether it was working on complex software development projects or participating in 
+                    cross-functional teams, I have consistently strived to contribute my expertise while valuing 
+                    the contributions of my teammates. Recognizing that no one person possesses all the answers or
+                    skills required for success has been crucial in fostering an environment of trust and mutual 
+                    respect within the teams I've worked with. Moreover, teamwork
                 </p>
                 <div className={'flex items-center justify-between max-w-[400px] m-auto py-4'}>
                     <div className={'rounded-full shadow-lg shadow-gray-900 p-6 cursor-pointer hover:scale-110 ease-in duration-75'}>

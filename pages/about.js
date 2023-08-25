@@ -20,19 +20,15 @@ const About = () => {
               <h1 className={'uppercase text-3xl tracking-widest text-[#D4AF37] text-center'}>About Thabiso Hlatshwayo</h1>
               <h2 className={'py-4 text-center'}>Who I am</h2>
               <p className={'py-2 text-gray-100'}>
-                I have been coding for the past nine years. 
-                In 11th grade, I began creating websites with HTML and CSS. 
-                I am excited to learn about different technology platforms. 
-                I have always had a fascination with technology and working with computers. 
-                After high school, I began studying JavaScript, my first programming language. 
-                After six months of tertiary education, I finally incorporated JavaScript into HTML. 
-                That is where my interest in programming began.
+                After incorporating JavaScript into HTML, I realized the power and versatility of programming. 
+                It opened up a whole new world of possibilities for me. I started exploring different frameworks
+                and libraries to enhance my software development skills.
               </p>
               <p className={'py-2 text-gray-100'}>
-                Following my tertiary education, 
-                I enrolled in a bootcamp (HyperionDev) to learn how to create software in Java and Python. 
-                After being captivated by the immense power of programming, 
-                I was immediately drawn to learning more. 
+                During my college years, I delved deeper into programming languages like Python and Java. 
+                These languages allowed me to build more complex applications and expand my problem-solving 
+                abilities. I enjoyed the challenge of creating efficient algorithms and finding elegant solutions 
+                to various coding problems.
               </p>
           </div>
           <div className={'w-full h-auto shadow-xl shadow-black rounded-xl flex items-center justify-center p-4 hover:scale-105 ease-in duration-300'}>
