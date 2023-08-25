@@ -13,6 +13,7 @@ import {
 } from 'react-icons/ai'
 
 import logo from '../../public/assets/logo/logo.png'
+import { links } from '../../utils/links'
 
 const NavBar = () => {
   const [nav, setNav] = useState(false)
@@ -23,17 +24,16 @@ const NavBar = () => {
 
   useEffect(() => {
     if (
-      router.asPath === '/projects/contacts' || 
+      router.asPath === '/projects/weather-forecast' || 
       router.asPath === '/projects/fyur' || 
-      router.asPath === '/projects/express' || 
-      router.asPath === '/projects/movie' || 
-      router.asPath === '/projects/thabiso' ||
-      router.asPath === '/projects/trivia'
+      router.asPath === '/projects/express-api' || 
+      router.asPath === '/projects/calculator' || 
+      router.asPath === '/projects/thabiso'
       ) {
         setNavBg('transparent')
         setLinkColor('#fff')
     } else {
-      setNavBg('#3f51b5')
+      setNavBg('#CD7373')
       setLinkColor('#fff')
     }
   },[router])
@@ -69,21 +69,13 @@ const NavBar = () => {
         </Link>
         <div>
           <ul style={{color: `${linkColor}`}} className={'hidden md:flex'}>
-            <Link href={'/'}>
-              <li className={'ml-10 text-sm uppercase hover:border-b'}>Home</li>
-            </Link>
-            <Link href={'/about'}>
-              <li className={'ml-10 text-sm uppercase hover:border-b'}>About</li>
-            </Link>
-            <Link href={'/skills'}>
-              <li className={'ml-10 text-sm uppercase hover:border-b'}>Skills</li>
-            </Link>
-            <Link href={'/projects'}>
-              <li className={'ml-10 text-sm uppercase hover:border-b'}>Projects</li>
-            </Link>
-            <Link href={'/contact'}>
-              <li className={'ml-10 text-sm uppercase hover:border-b'}>Contact</li>
-            </Link>
+            {links.map(link => (
+              <div key={link.id} className='pr-6'>
+                <Link href={link.path}>
+                  <li className={'ml-8 text-sm uppercase hover:border-b'}>{link.name}</li>
+                </Link>
+              </div>
+            ))}
           </ul>
           <div className={'md:hidden'} onClick={handleNav}>
             <AiOutlineMenu size={30} />
@@ -117,21 +109,13 @@ const NavBar = () => {
             </div>
             <div className={'py-4 flex flex-col'}>
               <ul className='uppercase'>
-                <Link href={'/'}>
-                  <li onClick={() => setNav(false)} className={'py-4 text-sm'}>Home</li>
-                </Link>
-                <Link href={'/about'}>
-                  <li onClick={() => setNav(false)} className={'py-4 text-sm'}>About</li>
-                </Link>
-                <Link href={'/skills'}>
-                  <li onClick={() => setNav(false)} className={'py-4 text-sm'}>Skills</li>
-                </Link>
-                <Link href={'/projects'}>
-                  <li onClick={() => setNav(false)} className={'py-4 text-sm'}>Projects</li>
-                </Link>
-                <Link href={'/contact'}>
-                  <li onClick={() => setNav(false)} className={'py-4 text-sm'}>Contact</li>
-                </Link>
+                {links.map(link => (
+                  <div key={link.id}>
+                    <Link href={link.path}>
+                      <li onClick={() => setNav(false)} className={'py-4 text-sm'}>{link.name}</li>
+                    </Link>
+                  </div>  
+                ))}
               </ul> 
             </div>
             <div className={'pt-4'}>
