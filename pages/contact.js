@@ -78,7 +78,7 @@ const Contact = () => {
             <p className={'text-xl tracking-widest uppercase text-[#D4AF37] text-center font-bold'}>Contact</p>
             <h2 className={'py-4 text-center'}>Get In touch</h2>
             <div className={'grid lg:grid-cols-5 gap-8'}>
-                <div className={'col-span-3 lg:col-span-2 w-full h-full shadow-xl shadow-gray-400 rounded-xl p-4'}>
+                <div className={'col-span-3 lg:col-span-2 w-full h-full shadow-xl shadow-gray-900 rounded-xl p-4'}>
                     <div className={'lg:p-4 h-full'}>
                         <div>
                             <Image className={'rounded-xl hover:scale-105 ease-in duration-300'} src={touch} alt="" width={'664'} height={'564'} />
@@ -92,23 +92,23 @@ const Contact = () => {
                         <div>
                             <p className={'uppercase pt-8'}>Connect with me</p>
                             <div className={'flex justify-between pt-5 ease-in duration-300'}>
-                                <div className={'rounded-full shadow-lg shadow-gray-700 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
+                                <div className={'rounded-full shadow-lg shadow-gray-900 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
                                     <Link href={'https://www.instagram.com/thabiso.timzo.dev/'}><AiFillInstagram size={20} /></Link>
                                 </div>
-                                <div className={'rounded-full shadow-lg shadow-gray-700 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
+                                <div className={'rounded-full shadow-lg shadow-gray-900 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
                                     <Link href={'https://twitter.com/thabiso_dev'}><AiOutlineTwitter size={20} /></Link>
                                 </div>
-                                <div className={'rounded-full shadow-lg shadow-gray-700 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
+                                <div className={'rounded-full shadow-lg shadow-gray-900 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
                                     <Link href={'https://www.linkedin.com/in/thabiso-hlatshwayo-8a4079198/'}><AiFillLinkedin size={20} /></Link>
                                 </div>
-                                <div className={'rounded-full shadow-lg shadow-gray-700 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
+                                <div className={'rounded-full shadow-lg shadow-gray-900 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
                                     <Link href={'https://github.com/Thabiso-007'}><AiFillGithub size={20}/></Link>
                                 </div>
                             </div>
                         </div>
                     </div> 
                 </div>
-                <div className={'col-span-3 w-full h-auto shadow-xl shadow-gray-400 rounded-xl lg:p-4'}>
+                <div className={'col-span-3 w-full h-auto shadow-xl shadow-gray-900 rounded-xl lg:p-4'}>
                     <div className={'p-4'}>
                         <form>
                             <div className={'grid md:grid-col-4 w-full py-2'}>

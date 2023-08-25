@@ -33,7 +33,7 @@ const NavBar = () => {
         setNavBg('transparent')
         setLinkColor('#fff')
     } else {
-      setNavBg('#CD7373')
+      setNavBg('#303030')
       setLinkColor('#fff')
     }
   },[router])
@@ -85,7 +85,7 @@ const NavBar = () => {
       <div className={nav ? 'md:hidden fixed left-0 top-0 w-full h-screen bg-black/70' : ''}>
         <div className={
           nav 
-          ? 'fixed left-0 w-[75%] sm:[60%] md:w-[45%] h-screen bg-blue-700 p-10 ease-in duration-500' 
+          ? 'fixed left-0 w-[75%] sm:[60%] md:w-[45%] h-screen bg-[#303030] p-10 ease-in duration-500' 
           : 'fixed left-[-100%] top-0 p-10 ease-in duration-500'
           }
         >
@@ -99,7 +99,7 @@ const NavBar = () => {
                   height={'50'}
                 />
               </Link>
-              <div onClick={handleNav} className={'rounded-full shadow-lg shadow-gray-700 p-3 cursor-pointer'}>
+              <div onClick={handleNav} className={'rounded-full shadow-lg shadow-gray-900 p-3 cursor-pointer'}>
                 <AiOutlineClose size={25} />
               </div>
               </div>
@@ -121,19 +121,19 @@ const NavBar = () => {
             <div className={'pt-4'}>
               <p className={'uppercase tracking-widest text-[#D4AF37]'}>Let's talk.</p>
               <div className={'flex items-center justify-between my-4 w-full sm:w-[80%]'}>
-                <div className={'rounded-full shadow-lg shadow-gray-700 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
+                <div className={'rounded-full shadow-lg shadow-gray-900 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
                   <Link href={'https://www.instagram.com/thabiso.timzo.dev/'}><AiFillInstagram size={20} /></Link>
                 </div>
-                <div className={'rounded-full shadow-lg shadow-gray-700 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
+                <div className={'rounded-full shadow-lg shadow-gray-900 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
                   <Link href={'https://twitter.com/thabiso_dev'}><AiOutlineTwitter size={20} /></Link>
                 </div>
-                <div className={'rounded-full shadow-lg shadow-gray-700 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
+                <div className={'rounded-full shadow-lg shadow-gray-900 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
                   <Link href={'https://www.linkedin.com/in/thabiso-hlatshwayo-8a4079198/'}><AiFillLinkedin size={20} /></Link>
                 </div>
-                <div className={'rounded-full shadow-lg shadow-gray-700 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
+                <div className={'rounded-full shadow-lg shadow-gray-900 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
                   <Link href={'https://github.com/Thabiso-Timzo'}><AiFillGithub size={20}/></Link>
                 </div>
-                <div className={'rounded-full shadow-lg shadow-gray-700 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
+                <div className={'rounded-full shadow-lg shadow-gray-900 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
                   <Link href={'mailto:thabiso.hlatshwayo24@gmail.com'}><AiFillMail size={20}/></Link>
                 </div>
               </div>

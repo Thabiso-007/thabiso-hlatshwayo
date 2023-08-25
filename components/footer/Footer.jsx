@@ -29,7 +29,7 @@ const Footer = () => {
       <div className={'mt-10'}>
         <div className={'flex justify-center py-12'}>
           {toTop && (
-            <div onClick={scrollUp} className={'rounded-full shadow-lg shadow-gray-700 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
+            <div onClick={scrollUp} className={'rounded-full shadow-lg shadow-gray-900 p-3 cursor-pointer hover:scale-105 ease-in duration-75'}>
               <IoIosArrowDropupCircle size={30}/>
             </div>
           )}
@@ -74,7 +74,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className={'flex flex-col justify-center items-center text-center p-5 bg-slate-800'}>
+      <div className={'flex flex-col justify-center items-center text-center p-5 bg-[#000000]'}>
         <p className={'font-bold'}>Copyright © {new Date().getFullYear()} Thabiso Hlatshwayo</p> 
       </div>
     </>
