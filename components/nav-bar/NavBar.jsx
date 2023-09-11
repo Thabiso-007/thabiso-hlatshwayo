@@ -28,7 +28,8 @@ const NavBar = () => {
       router.asPath === '/projects/fyur' || 
       router.asPath === '/projects/express-api' || 
       router.asPath === '/projects/calculator' || 
-      router.asPath === '/projects/thabiso'
+      router.asPath === '/projects/thabiso' || 
+      router.asPath === '/projects/executant'
       ) {
         setNavBg('transparent')
         setLinkColor('#fff')
