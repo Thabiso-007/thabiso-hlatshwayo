@@ -76,5 +76,10 @@ export const projects = [
         id: 5,
         path: "/projects/weather-forecast",
         name: "Weather forecast"
+    },
+    {
+        id: 6,
+        path: "/projects/executant",
+        name: "Executant "
     }
 ]

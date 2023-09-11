@@ -9,7 +9,7 @@ import Thabiso from '../components/thabiso/Thabiso'
 //import Movie from '../components/movie/Movie'
 import Calculator from '../components/calculator/Calculator'
 import Weather from '../components/weather/Weather'
-
+import Executant from '../components/executant/Executant'
 
 import api from '../public/assets/projects/api.png'
 import gude from '../public/assets/projects/gude.png'
@@ -18,6 +18,7 @@ import fyur from '../public/assets/projects/fyur.png'
 import thabiso from '../public/assets/projects/thabiso.png'
 import calculator from '../public/assets/projects/calculator.png'
 import weather from '../public/assets/projects/weather.png'
+import executant from '../public/assets/projects/executant.png'
 
 const Projects = () => {
   return (
@@ -40,6 +41,7 @@ const Projects = () => {
                 <Thabiso title="thabiso" backgroundImg={thabiso} projectURL={'/projects/thabiso'}/>
                 <Calculator title="calculator" backgroundImg={calculator} projectURL={'/projects/calculator'}/>
                 <Weather title="calculator" backgroundImg={weather} projectURL={'/projects/weather-forecast'}/>
+                <Executant title="Executant" backgroundImg={executant} projectURL={'/projects/executant'} />
             </div>
         </div>
     </div>

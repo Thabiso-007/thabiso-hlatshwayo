@@ -11,7 +11,7 @@ import flask from '../public/assets/skills/flask.png'
 import java from '../public/assets/skills/java.png'
 import spring from '../public/assets/skills/spring.png'
 import redux from '../public/assets/skills/redux.png'
-import mysql from '../public/assets/skills/mysql.png'
+import postgresql from '../public/assets/skills/postgresql.png'
 import sqlalchemy from '../public/assets/skills/sqlAlchemy.png'
 import mongo from '../public/assets/skills/mongodb.png'
 import tailwind from '../public/assets/skills/tailwind-css.png'
@@ -20,6 +20,7 @@ import node from '../public/assets/skills/node.png'
 import express from '../public/assets/skills/express.png'
 import next from '../public/assets/skills/nextjs.png'
 import graphql from '../public/assets/skills/graphql.png'
+import sass from '../public/assets/skills/sass.png'
 
 export const data = [
     {
@@ -94,8 +95,8 @@ export const data = [
     },
     {
         id: 15,
-        name: "MySQL",
-        image: mysql
+        name: "PostgreSQL",
+        image: postgresql
     },
     {
         id: 16,
@@ -131,5 +132,10 @@ export const data = [
         id: 22,
         name: "Next.js",
         image: next
+    },
+    {
+        id: 23,
+        name: "Sass",
+        image: sass
     }
 ]
