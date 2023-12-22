@@ -21,6 +21,7 @@ import express from '../public/assets/skills/express.png'
 import next from '../public/assets/skills/nextjs.png'
 import graphql from '../public/assets/skills/graphql.png'
 import sass from '../public/assets/skills/sass.png'
+import angular from '../public/assets/skills/angular.png'
 
 export const data = [
     {
@@ -137,5 +138,10 @@ export const data = [
         id: 23,
         name: "Sass",
         image: sass
+    },
+    {
+        id: 24,
+        name: "Angular",
+        image: angular
     }
 ]
