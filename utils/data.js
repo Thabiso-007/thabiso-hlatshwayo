@@ -22,6 +22,7 @@ import next from '../public/assets/skills/nextjs.png'
 import graphql from '../public/assets/skills/graphql.png'
 import sass from '../public/assets/skills/sass.png'
 import angular from '../public/assets/skills/angular.png'
+import csharp from '../public/assets/skills/c-sharp.png'
 
 export const data = [
     {
@@ -143,5 +144,10 @@ export const data = [
         id: 24,
         name: "Angular",
         image: angular
+    },
+    {
+        id: 25,
+        name: "C#",
+        image: csharp
     }
 ]
