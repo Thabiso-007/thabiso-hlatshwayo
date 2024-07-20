@@ -4,11 +4,9 @@ import React from 'react'
 import Link from 'next/link'
 import { BsFillArrowLeftCircleFill } from 'react-icons/bs'
 
-import NavBar from '../../../components/nav-bar/NavBar'
-import Footer from '../../../components/footer/Footer'
-import mongo from '../../../public/assets/skills/mongodb.png'
-import express from '../../../public/assets/skills/express.png'
-import node from '../../../public/assets/skills/node.png'
+import mongo from '../../../../public/assets/skills/mongodb.png'
+import express from '../../../../public/assets/skills/express.png'
+import node from '../../../../public/assets/skills/node.png'
 
 const Index = () => {
   return (
@@ -20,9 +18,9 @@ const Index = () => {
       </Head>
       <div className={'w-full'}>
         <div className={'w-screen h-[25vh] lg:h-[40vh relative]'}>
-          <div className={'absolute top-0 left-0 w-full h-[30vh] lg:h-[40vh] bg-black/50 z-10'}>
+          <div className={'absolute top-0 left-0 w-full h-[30vh] lg:h-[40vh] bg-[#303030] z-10'}>
             <div className={'absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%]'}>
-              <Link href={'/projects'}>
+              <Link href={'/projects/api'}>
                 <div className={'ml-5 mb-5 text-2xl cursor-pointer w-3 h-3 rounded-full hover:text-[#D4AF37]'}>
                   <BsFillArrowLeftCircleFill />
                 </div>

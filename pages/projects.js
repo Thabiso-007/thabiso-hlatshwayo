@@ -1,26 +1,13 @@
 import Head from 'next/head'
-import React from 'react'
-
-import Gude from '../components/gude/Gude'
-import ExpressStoreAPI from '../components/express-store-api/ExpressStoreAPI'
-//import Contact from '../components/contact/Contact'
-import Fyur from '../components/fyur/Fyur'
-import Thabiso from '../components/thabiso/Thabiso'
-//import Movie from '../components/movie/Movie'
-import Calculator from '../components/calculator/Calculator'
-import Weather from '../components/weather/Weather'
-import Executant from '../components/executant/Executant'
-
-import api from '../public/assets/projects/api.png'
-import gude from '../public/assets/projects/gude.png'
-//import contact from '../public/assets/projects/phone.png'
-import fyur from '../public/assets/projects/fyur.png'
-import thabiso from '../public/assets/projects/thabiso.png'
-import calculator from '../public/assets/projects/calculator.png'
-import weather from '../public/assets/projects/weather.png'
-import executant from '../public/assets/projects/executant.png'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import classNames from 'classnames'
 
 const Projects = () => {
+  const router = useRouter()
+
+  const isActive = (path) => router.pathname === path
+
   return (
     <>
       <Head>
@@ -30,21 +17,59 @@ const Projects = () => {
       </Head>
       <div className={'h-20'}></div>
       <div className={'w-full'}>
-        <div className={'max-w-[1240] mx-auto px-2 py-16'}>
-            <p className={'text-xl tracking-widest uppercase text-[#D4AF37] text-center font-bold'}>Projects</p>
-            <h2 className={'py-4 text-center'}>What I have built</h2>
-            <div className={'grid md:grid-cols-2 gap-8'}>
-                {/* <Gude title="Express" backgroundImg={gude} projectURL={'/projects/express'}/> */}
-                <ExpressStoreAPI title="Express-store-api" backgroundImg={api} projectURL={'/projects/express-api'}/>
-                {/* <Contact title="Contact" backgroundImg={contact} projectURL={'/projects/contacts'}/> */}
-                <Fyur title="Fyer" backgroundImg={fyur} projectURL={'/projects/fyur'}/>
-                <Thabiso title="thabiso" backgroundImg={thabiso} projectURL={'/projects/thabiso'}/>
-                <Calculator title="calculator" backgroundImg={calculator} projectURL={'/projects/calculator'}/>
-                <Weather title="calculator" backgroundImg={weather} projectURL={'/projects/weather-forecast'}/>
-                <Executant title="Executant" backgroundImg={executant} projectURL={'/projects/executant'} />
+        <div className={'max-w-[1240px] mx-auto px-2 py-16'}>
+          <p className={'text-xl tracking-widest uppercase text-[#D4AF37] text-center font-bold'}>Projects</p>
+          <h2 className={'py-4 text-center'}>What I have built</h2>
+          <div className={'grid grid-cols-1 gap-8'}>
+            <div className={'flex flex-wrap justify-between'}>
+              <div className={'w-1/4 p-4'}>
+                <h3 className={'text-center text-lg font-semibold'}>Web</h3>
+                <Link href="/projects/web">
+                  <div className={classNames('block text-center', {
+                    'text-blue-500 hover:underline decoration-white': !isActive('/projects/web'),
+                    'text-red-500 underline decoration-white': isActive('/projects/web')
+                  })}>
+                    <p className='text-white py-4 text-sm'>View Web Projects</p>
+                  </div>
+                </Link>
+              </div>
+              <div className={'w-1/4 p-4'}>
+                <h3 className={'text-center text-lg font-semibold'}>Mobile</h3>
+                <Link href="/projects/mobile">
+                  <div className={classNames('block text-center', {
+                    'text-blue-500 hover:underline decoration-white': !isActive('/projects/mobile'),
+                    'text-red-500 underline decoration-white': isActive('/projects/mobile')
+                  })}>
+                    <p className='text-white py-4 text-sm'>View Mobile Projects</p>
+                  </div>
+                </Link>
+              </div>
+              <div className={'w-1/4 p-4'}>
+                <h3 className={'text-center text-lg font-semibold'}>API</h3>
+                <Link href="/projects/api">
+                  <div className={classNames('block text-center', {
+                    'text-blue-500 hover:underline decoration-white': !isActive('/projects/api'),
+                    'text-red-500 underline decoration-white': isActive('/projects/api')
+                  })}>
+                    <p className='text-white py-4 text-sm decoration-white'>View API Projects</p>
+                  </div>
+                </Link>
+              </div>
+              <div className={'w-1/4 p-4'}>
+                <h3 className={'text-center text-lg font-semibold'}>Design</h3>
+                <Link href="/projects/design" className=''>
+                  <div className={classNames('block text-center', {
+                    'text-blue-500 hover:underline decoration-white': !isActive('/projects/design'),
+                    'text-red-500 underline decoration-white': isActive('/projects/design')
+                  })}>
+                    <p className='text-white py-4 text-sm decoration-white'>View Design Projects</p>
+                  </div>
+                </Link> 
+              </div>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
     </>
   )
 }
