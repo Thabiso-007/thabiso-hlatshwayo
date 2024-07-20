@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "caniuse-lite": "^1.0.30001509",
+    "classnames": "^2.5.1",
     "next": "13.0.4",
     "nodemailer": "^6.8.0",
     "react": "18.2.0",
