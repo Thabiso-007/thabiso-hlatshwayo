@@ -1,11 +1,11 @@
 import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
 
 export const socials = [
-    {
-        id: 1,
-        url: "https://twitter.com/thabiso_dev",
-        icon: FaTwitter
-    },
+    // {
+    //     id: 1,
+    //     url: "https://twitter.com/thabiso_dev",
+    //     icon: FaTwitter
+    // },
     {
         id: 2,
         url: "https://www.instagram.com/thabiso.timzo.dev/",
@@ -54,32 +54,32 @@ export const links = [
 export const projects = [
     {
         id: 1,
-        path: "/projects/express-api",
+        path: "/projects/api/express-api",
         name: "Express store API"
     },
     {
         id: 2,
-        path: "/projects/calculator",
+        path: "/projects/web/calculator",
         name: "Calculator"
     },
-    {
-        id: 3,
-        path: "/projects/fyur",
-        name: "Fyur"
-    },
+    // {
+    //     id: 3,
+    //     path: "/projects/fyur",
+    //     name: "Fyur"
+    // },
     {
         id: 4,
-        path: "/projects/thabiso",
+        path: "/projects/web/thabiso",
         name: "Thabiso"
     },
     {
         id: 5,
-        path: "/projects/weather-forecast",
+        path: "/projects/web/weather-forecast",
         name: "Weather forecast"
     },
     {
         id: 6,
-        path: "/projects/executant",
+        path: "/projects/web/executant",
         name: "Executant "
     }
 ]
