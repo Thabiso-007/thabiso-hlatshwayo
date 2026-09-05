@@ -30,7 +30,7 @@ export default function Contact() {
       await new Promise(resolve => setTimeout(resolve, 1000));
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -46,7 +46,8 @@ export default function Contact() {
             Get In Touch
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            I'd love to hear from you. Send me a message and I'll respond as soon as possible.
+            Based in Johannesburg, South Africa — I&apos;d love to hear from you. Send me a
+            message and I&apos;ll respond as soon as possible.
           </p>
         </div>
 
@@ -55,11 +56,11 @@ export default function Contact() {
           <div className="space-y-8">
             <div>
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Let's Connect
+                Let&apos;s Connect
               </h2>
               <p className="text-gray-600 dark:text-gray-300 mb-8">
-                Whether you have a project in mind, want to collaborate, or just want to say hello, 
-                I'm always excited to connect with fellow developers and potential clients.
+                Whether you have a project in mind, want to collaborate, or just want to say hello,
+                I&apos;m always excited to connect with fellow developers and potential clients.
               </p>
             </div>
 
@@ -109,6 +110,22 @@ export default function Contact() {
 
               <div className="flex items-start">
                 <div className="flex-shrink-0">
+                  <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
+                    <svg className="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="ml-4">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Location</h3>
+                  <p className="text-gray-600 dark:text-gray-300">Johannesburg, South Africa</p>
+                  <p className="text-gray-600 dark:text-gray-300">Open to remote work worldwide</p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <div className="flex-shrink-0">
                   <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
                     <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
@@ -139,8 +156,8 @@ export default function Contact() {
                 </h3>
               </div>
               <p className="text-gray-600 dark:text-gray-300">
-                I'm currently available for freelance projects and full-time opportunities. 
-                Let's discuss how we can work together!
+                I&apos;m currently available for freelance projects and full-time opportunities.
+                Let&apos;s discuss how we can work together!
               </p>
             </div>
           </div>
@@ -154,7 +171,7 @@ export default function Contact() {
             {submitStatus === 'success' && (
               <div className="mb-6 p-4 bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-lg">
                 <p className="text-green-800 dark:text-green-200">
-                  Thank you for your message! I'll get back to you soon.
+                  Thank you for your message! I&apos;ll get back to you soon.
                 </p>
               </div>
             )}
@@ -262,7 +279,7 @@ export default function Contact() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                What's your typical response time?
+                What&apos;s your typical response time?
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
                 I usually respond to emails within 24-48 hours. For urgent matters, 
@@ -283,8 +300,9 @@ export default function Contact() {
                 What technologies do you specialize in?
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                I specialize in React, Next.js, TypeScript, Node.js, and modern 
-                web development technologies. Check out my skills on the About page.
+                I work across JavaScript, TypeScript, Python and Java — with React, Angular,
+                Vue, Node.js, Express and Spring Boot, plus DevOps tooling like Docker,
+                Kubernetes and AWS. Check out my skills on the About page.
               </p>
             </div>
             <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
