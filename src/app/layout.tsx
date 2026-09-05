@@ -28,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
+        id="top"
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NavBar />
