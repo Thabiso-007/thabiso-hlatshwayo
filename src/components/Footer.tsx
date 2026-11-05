@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { CONTACT_EMAIL, CONTACT_MAILTO } from '@/lib/contact';
 
 const socials = [
   {
@@ -18,7 +19,7 @@ const socials = [
   },
   {
     name: 'Email',
-    href: 'mailto:thabiso.hlatshwayo@example.com',
+    href: CONTACT_MAILTO,
     svg: (
       <path
         stroke="currentColor"
@@ -52,8 +53,8 @@ const techStack = [
 const contactDetails = [
   {
     label: 'Email',
-    value: 'thabiso.hlatshwayo@example.com',
-    href: 'mailto:thabiso.hlatshwayo@example.com',
+    value: CONTACT_EMAIL,
+    href: CONTACT_MAILTO,
   },
   {
     label: 'GitHub',
@@ -162,7 +163,7 @@ const Footer = () => {
               {contactDetails.map((detail) => (
                 <li key={detail.label} className="flex items-start gap-3">
                   <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-xs uppercase tracking-wide text-gray-500">
                       {detail.label}
                     </p>
@@ -171,7 +172,7 @@ const Footer = () => {
                         href={detail.href}
                         target={detail.href.startsWith('http') ? '_blank' : undefined}
                         rel={detail.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className="text-gray-300 transition-colors hover:text-white"
+                        className="break-words text-gray-300 transition-colors hover:text-white"
                       >
                         {detail.value}
                       </a>

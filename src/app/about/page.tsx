@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { CONTACT_MAILTO } from '@/lib/contact';
 
 export default function About() {
   return (
@@ -159,7 +160,7 @@ export default function About() {
                   Johannesburg, South Africa
                 </p>
                 <a
-                  href="mailto:thabiso.hlatshwayo@example.com"
+                  href={CONTACT_MAILTO}
                   className="flex items-center text-white/90 hover:text-white transition-colors"
                 >
                   <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
