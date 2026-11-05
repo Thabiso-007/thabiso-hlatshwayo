@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function About() {
   return (
@@ -63,10 +64,16 @@ export default function About() {
                   DevOps &amp; Cloud
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Containerising with Docker, orchestrating with Kubernetes, delivering with Argo
-                  CD, and running production workloads on AWS — deployment, security and
-                  observability are part of the job.
+                  Building with Docker, Kubernetes and Helm; automating delivery with GitHub
+                  Actions and Argo CD; and provisioning cloud infrastructure with Terraform.
                 </p>
+                <p className="mt-3 text-gray-600 dark:text-gray-300 text-sm">
+                  AWS services include IAM Roles, EC2, S3, RDS, Route 53, Secrets Manager and
+                  Certificate Manager.
+                </p>
+                <Link href="/#devops" className="mt-4 inline-block text-sm font-medium text-green-700 hover:underline dark:text-green-400">
+                  Explore my DevOps &amp; AWS stack →
+                </Link>
               </div>
             </div>
           </div>

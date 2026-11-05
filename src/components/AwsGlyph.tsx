@@ -3,19 +3,24 @@
  *
  * Why this file exists: react-icons v5 no longer ships per-service AWS icons
  * (Simple Icons dropped Amazon AWS entries). Only the generic `FaAws` logo is
- * available, which would mean the same icon repeated nine times. These are
- * lightweight stroke SVGs in the AWS orange so each service is distinguishable.
+ * available, which would mean the same icon repeated for every service. These
+ * lightweight stroke SVGs make the services distinguishable in AWS orange.
  */
 
 type AwsGlyphName =
   | 'ec2'
   | 'eks'
+  | 'lambda'
+  | 's3'
   | 'rds'
+  | 'vpc'
   | 'secrets'
   | 'ssm'
   | 'route53'
   | 'iam'
   | 'cloudwatch'
+  | 'cloudformation'
+  | 'dms'
   | 'acm';
 
 const PATHS: Record<AwsGlyphName, string[]> = {
@@ -36,11 +41,33 @@ const PATHS: Record<AwsGlyphName, string[]> = {
     'M19.6 16.4 15 13.7',
     'M4.4 16.4 9 13.7',
   ],
+  // Lambda - serverless functions
+  lambda: [
+    'M7 4h3l5 15h3',
+    'M12 12 8 19H6',
+  ],
+  // S3 - object storage bucket
+  s3: [
+    'M4 5h16v2H4z',
+    'M5 7l1.5 12h11L19 7',
+    'M9 11h6',
+    'M9 14h6',
+  ],
   // RDS - managed relational database
   rds: [
     'M5 6c0-1.1 3.13-2 7-2s7 .9 7 2-3.13 2-7 2-7-.9-7-2z',
     'M5 6v12c0 1.1 3.13 2 7 2s7-.9 7-2V6',
     'M5 12c0 1.1 3.13 2 7 2s7-.9 7-2',
+  ],
+  // VPC - private network and connected resources
+  vpc: [
+    'M4 4h16v16H4z',
+    'M12 7v4',
+    'M7 16v-3h10v3',
+    'M12 11v2',
+    'M6 16h2v2H6z',
+    'M16 16h2v2h-2z',
+    'M11 5h2v2h-2z',
   ],
   // Secrets Manager - vault / safe
   secrets: [
@@ -76,6 +103,21 @@ const PATHS: Record<AwsGlyphName, string[]> = {
     'M7 12l2.5-2.5 2 2L15 8',
     'M9.5 19.5h5',
     'M12 16v3.5',
+  ],
+  // CloudFormation - infrastructure templates
+  cloudformation: [
+    'M4 4h13v13H4z',
+    'M8 17v3h12V8h-3',
+    'M9 8l-2 2.5L9 13',
+    'M12 8l2 2.5-2 2.5',
+  ],
+  // DMS - database migration
+  dms: [
+    'M3 6c0-1.1 2-2 4.5-2S12 4.9 12 6 10 8 7.5 8 3 7.1 3 6z',
+    'M3 6v9c0 1.1 2 2 4.5 2S12 16.1 12 15V6',
+    'M3 10.5c0 1.1 2 2 4.5 2S12 11.6 12 10.5',
+    'M14 14h6',
+    'M17.5 11.5 20 14l-2.5 2.5',
   ],
   // Certificate Manager - certificate with seal
   acm: [

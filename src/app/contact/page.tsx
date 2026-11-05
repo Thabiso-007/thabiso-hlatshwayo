@@ -74,9 +74,9 @@ export default function Contact() {
                     </svg>
                   </div>
                 </div>
-                <div className="ml-4">
+                <div className="ml-4 min-w-0">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Email</h3>
-                  <p className="text-gray-600 dark:text-gray-300">thabiso.hlatshwayo@example.com</p>
+                  <p className="break-words text-gray-600 dark:text-gray-300">thabiso.hlatshwayo@example.com</p>
                   <a
                     href="mailto:thabiso.hlatshwayo@example.com"
                     className="text-blue-600 hover:text-blue-700 transition-colors"
