@@ -5,22 +5,31 @@ import {
   SiCss,
   SiDocker,
   SiFlask,
-  SiKeras,
   SiExpress,
+  SiGit,
+  SiGithubactions,
+  SiGrafana,
+  SiHelm,
+  SiJenkins,
+  SiKeras,
   SiKubernetes,
+  SiLens,
   SiMongodb,
   SiMysql,
   SiNodedotjs,
   SiNumpy,
   SiPandas,
   SiPostgresql,
+  SiPrometheus,
   SiPython,
   SiPytorch,
+  SiRancher,
   SiReact,
   SiScikitlearn,
   SiSpringboot,
   SiTailwindcss,
   SiTensorflow,
+  SiTerraform,
   SiVuedotjs,
 } from 'react-icons/si';
 import { FaJava, FaReact } from 'react-icons/fa';
@@ -72,21 +81,35 @@ const databaseSkills: Skill[] = [
 ];
 
 const devopsSkills: Skill[] = [
-  { name: 'Docker', detail: 'Containerised, reproducible builds', color: '#2496ED', Icon: SiDocker },
-  { name: 'Kubernetes', detail: 'Orchestration, scaling & self-healing', color: '#326CE5', Icon: SiKubernetes },
-  { name: 'Argo CD', detail: 'GitOps continuous delivery to Kubernetes', color: '#EF7B4D', Icon: SiArgo },
+  { name: 'Docker', detail: 'Containers & Docker Compose', color: '#2496ED', Icon: SiDocker },
+  { name: 'Kubernetes', detail: 'Container orchestration & scaling', color: '#326CE5', Icon: SiKubernetes },
+  { name: 'Helm', detail: 'Kubernetes charts & releases', color: '#3977D5', Icon: SiHelm },
+  { name: 'Argo CD', detail: 'GitOps continuous delivery', color: '#EF7B4D', Icon: SiArgo },
+  { name: 'GitHub Actions', detail: 'Automated build & deploy pipelines', color: '#2088FF', Icon: SiGithubactions },
+  { name: 'Jenkins', detail: 'Continuous integration & delivery', color: '#D24939', Icon: SiJenkins },
+  { name: 'Terraform', detail: 'Infrastructure as code', color: '#844FBA', Icon: SiTerraform },
+  { name: 'Git', detail: 'Version control & collaboration', color: '#F05032', Icon: SiGit },
+  { name: 'Prometheus', detail: 'Metrics collection & monitoring', color: '#E6522C', Icon: SiPrometheus },
+  { name: 'Grafana', detail: 'Dashboards & observability', color: '#F46800', Icon: SiGrafana },
+  { name: 'Rancher', detail: 'Kubernetes cluster management', color: '#0075A8', Icon: SiRancher },
+  { name: 'Lens', detail: 'Kubernetes cluster tooling', color: '#3D90CE', Icon: SiLens },
 ];
 
 const awsSkills: Skill[] = [
   { name: 'Amazon EKS', detail: 'Managed Kubernetes clusters', glyph: 'eks' },
   { name: 'Amazon EC2', detail: 'Virtual servers & app hosting', glyph: 'ec2' },
+  { name: 'AWS Lambda', detail: 'Serverless functions', glyph: 'lambda' },
+  { name: 'Amazon S3', detail: 'Object storage for files & backups', glyph: 's3' },
   { name: 'Amazon RDS', detail: 'Managed PostgreSQL & MySQL', glyph: 'rds' },
+  { name: 'Amazon VPC', detail: 'Private cloud networking', glyph: 'vpc' },
   { name: 'Route 53', detail: 'DNS routing & domain management', glyph: 'route53' },
   { name: 'IAM Roles', detail: 'Least-privilege access control', glyph: 'iam' },
-  { name: 'Secrets Manager', detail: 'Encrypted credential rotation', glyph: 'secrets' },
+  { name: 'Secrets Manager', detail: 'Encrypted secrets & credentials', glyph: 'secrets' },
   { name: 'Parameter Store', detail: 'Secure environment configuration', glyph: 'ssm' },
-  { name: 'CloudWatch', detail: 'Logs, metrics & alerting', glyph: 'cloudwatch' },
   { name: 'Certificate Manager', detail: 'TLS certificates & HTTPS', glyph: 'acm' },
+  { name: 'CloudWatch', detail: 'Logs, metrics & alerting', glyph: 'cloudwatch' },
+  { name: 'CloudFormation', detail: 'AWS infrastructure as code', glyph: 'cloudformation' },
+  { name: 'AWS DMS', detail: 'Database migration service', glyph: 'dms' },
 ];
 
 const AWS_ORANGE = '#FF9900';
@@ -94,30 +117,32 @@ const AWS_ORANGE = '#FF9900';
 const devopsPractices = [
   {
     title: 'CI/CD & GitOps',
-    description: 'Pipelines build and test; Argo CD syncs the cluster to match git.',
-    items: ['GitHub Actions', 'Argo CD', 'Git as source of truth', 'Zero-downtime deploys'],
+    description: 'Automating builds and deployments, with Git as the source of truth.',
+    items: ['GitHub Actions', 'Jenkins', 'Argo CD', 'Git'],
   },
   {
     title: 'Containers & Orchestration',
-    description: 'The same artifact runs on my laptop and in production on EKS.',
-    items: ['Docker', 'Amazon EKS', 'Kubernetes'],
+    description: 'Packaging applications and managing Kubernetes workloads.',
+    items: ['Docker', 'Docker Compose', 'Kubernetes', 'Helm', 'Amazon EKS'],
   },
   {
     title: 'Secure Cloud Infrastructure',
-    description: 'Access and secrets are configured, never hardcoded.',
-    items: ['IAM Roles', 'Secrets Manager', 'Parameter Store', 'ACM'],
+    description: 'Provisioning cloud resources and managing access, secrets and certificates.',
+    items: ['Terraform', 'CloudFormation', 'IAM Roles', 'Secrets Manager', 'ACM'],
   },
   {
     title: 'Observability & Reliability',
-    description: 'I know about problems before users report them.',
-    items: ['CloudWatch', 'Metrics & alarms', 'Route 53 health checks'],
+    description: 'Monitoring metrics and logs to help keep services reliable.',
+    items: ['CloudWatch', 'Prometheus', 'Grafana', 'Route 53 health checks'],
   },
 ];
 
-function SkillCard({ skill }: { skill: Skill }) {
+function SkillCard({ skill, raised = false }: { skill: Skill; raised?: boolean }) {
   const color = skill.color ?? AWS_ORANGE;
   return (
-    <div className="group bg-gray-50 dark:bg-gray-800 p-6 rounded-lg text-center hover:shadow-lg hover:-translate-y-0.5 transition-all">
+    <div className={`group min-w-0 rounded-lg p-4 text-center transition-all hover:-translate-y-0.5 hover:shadow-lg sm:p-6 ${
+      raised ? 'bg-white shadow-sm ring-1 ring-gray-200/70 dark:bg-gray-900 dark:ring-gray-800' : 'bg-gray-50 dark:bg-gray-800'
+    }`}>
       <div
         className={`w-14 h-14 mx-auto mb-4 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110${
           skill.light ? ' border border-gray-200 dark:border-gray-700 dark:!text-gray-100' : ''
@@ -126,8 +151,8 @@ function SkillCard({ skill }: { skill: Skill }) {
       >
         {skill.Icon ? <skill.Icon className="w-8 h-8" /> : <AwsGlyph name={skill.glyph!} />}
       </div>
-      <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{skill.name}</h3>
-      <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{skill.detail}</p>
+      <h3 className="break-words text-base font-semibold text-gray-900 sm:text-lg dark:text-white">{skill.name}</h3>
+      <p className="mt-1 break-words text-sm text-gray-600 dark:text-gray-400">{skill.detail}</p>
     </div>
   );
 }
@@ -170,7 +195,7 @@ export default function Home() {
             </p>
             <p className="text-base md:text-lg text-gray-500 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
               React, Angular &amp; Vue on the front end · Node.js, Spring Boot &amp; Python
-              behind it · containerised with Docker, delivered by Argo CD, running on AWS
+              behind it · deployed with Kubernetes, GitHub Actions, Argo CD and AWS
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -252,32 +277,32 @@ export default function Home() {
       </section>
 
       {/* DevOps & Cloud Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="devops" className="scroll-mt-20 bg-gray-50 py-20 dark:bg-gray-950">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             badge="DevOps & Cloud"
             title="DevOps Tech Stack"
-            subtitle="I don't just build applications — I containerise, deploy and monitor them on AWS"
+            subtitle="From infrastructure as code and CI/CD to containers and monitoring on AWS"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-14">
+          <div className="mb-14 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
             {devopsSkills.map((skill) => (
-              <SkillCard key={skill.name} skill={skill} />
+              <SkillCard key={skill.name} skill={skill} raised />
             ))}
           </div>
 
-          <div className="border-t border-gray-200 dark:border-gray-800 pt-14">
-            <div className="text-center mb-10">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+          <div className="border-t border-gray-200 pt-14 dark:border-gray-800">
+            <div className="mb-10 text-center">
+              <h3 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
                 AWS Cloud Services
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                The managed services I use to run production workloads
+                Services for compute, storage, networking, security and observability
               </p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
               {awsSkills.map((skill) => (
-                <SkillCard key={skill.name} skill={skill} />
+                <SkillCard key={skill.name} skill={skill} raised />
               ))}
             </div>
           </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { CONTACT_EMAIL, CONTACT_MAILTO } from '@/lib/contact';
 
 const socials = [
   {
@@ -18,7 +19,7 @@ const socials = [
   },
   {
     name: 'Email',
-    href: 'mailto:thabiso.hlatshwayo@example.com',
+    href: CONTACT_MAILTO,
     svg: (
       <path
         stroke="currentColor"
@@ -45,14 +46,15 @@ const techStack = [
   'Node.js & Express',
   'Python & Flask',
   'Docker & Kubernetes',
-  'AWS & Argo CD',
+  'GitHub Actions & Argo CD',
+  'Terraform & AWS',
 ];
 
 const contactDetails = [
   {
     label: 'Email',
-    value: 'thabiso.hlatshwayo@example.com',
-    href: 'mailto:thabiso.hlatshwayo@example.com',
+    value: CONTACT_EMAIL,
+    href: CONTACT_MAILTO,
   },
   {
     label: 'GitHub',
@@ -79,11 +81,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-12">
           {/* Brand Section */}
           <div className="lg:col-span-5">
-            <Link href="/" className="group inline-flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 text-lg font-bold shadow-lg shadow-blue-900/30 transition-transform group-hover:scale-105">
+            <Link href="/" className="group inline-flex max-w-full items-center gap-3">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 text-lg font-bold shadow-lg shadow-blue-900/30 transition-transform group-hover:scale-105">
                 TH
               </span>
-              <span className="text-2xl font-bold tracking-tight">
+              <span className="truncate text-xl font-bold tracking-tight sm:text-2xl">
                 Thabiso&nbsp;Hlatshwayo
               </span>
             </Link>
@@ -161,7 +163,7 @@ const Footer = () => {
               {contactDetails.map((detail) => (
                 <li key={detail.label} className="flex items-start gap-3">
                   <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-xs uppercase tracking-wide text-gray-500">
                       {detail.label}
                     </p>
@@ -170,7 +172,7 @@ const Footer = () => {
                         href={detail.href}
                         target={detail.href.startsWith('http') ? '_blank' : undefined}
                         rel={detail.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className="text-gray-300 transition-colors hover:text-white"
+                        className="break-words text-gray-300 transition-colors hover:text-white"
                       >
                         {detail.value}
                       </a>
