@@ -1,7 +1,9 @@
 import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
 import { CONTACT_EMAIL, CONTACT_LIMITS } from '@/lib/contact';
 
 export const runtime = 'nodejs';
+export const maxDuration = 30;
 
 const MAX_REQUEST_BYTES = 32 * 1024;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
@@ -71,6 +73,30 @@ type ContactMessage = {
   message: string;
 };
 
+const emailPattern = /^[^\s@<>,;"\\]+@[^\s@<>,;"\\]+\.[^\s@<>,;"\\]+$/;
+
+function getSmtpSettings() {
+  const user = process.env.SMTP_USER?.trim();
+  const rawPassword = process.env.SMTP_PASSWORD?.trim();
+  const host = process.env.SMTP_HOST?.trim() || 'smtp.gmail.com';
+  const portString = process.env.SMTP_PORT?.trim() || '465';
+  const secureSetting = process.env.SMTP_SECURE?.trim().toLowerCase();
+  const port = Number(portString);
+
+  if (!user || user.length > CONTACT_LIMITS.email || !emailPattern.test(user) || !rawPassword
+    || /\s/.test(host) || !/^\d+$/.test(portString) || port < 1 || port > 65535
+    || (secureSetting && secureSetting !== 'true' && secureSetting !== 'false')) {
+    return null;
+  }
+
+  // Google displays app passwords in groups of four; spaces are not part of the password.
+  const pass = host.toLowerCase() === 'smtp.gmail.com' ? rawPassword.replace(/\s/g, '') : rawPassword;
+  if (!pass) return null;
+  const secure = secureSetting ? secureSetting === 'true' : port === 465;
+
+  return { host, port, secure, user, pass };
+}
+
 function validateMessage(input: unknown): ContactMessage | null {
   if (!input || typeof input !== 'object' || Array.isArray(input)) return null;
   const data = input as Record<string, unknown>;
@@ -86,7 +112,6 @@ function validateMessage(input: unknown): ContactMessage | null {
   const subject = data.subject.trim();
   const message = data.message.trim();
   const singleLine = /^[^\u0000-\u001f\u007f]+$/;
-  const emailPattern = /^[^\s@<>,;"\\]+@[^\s@<>,;"\\]+\.[^\s@<>,;"\\]+$/;
 
   if (!name || name.length > CONTACT_LIMITS.name || !singleLine.test(name)
     || !email || email.length > CONTACT_LIMITS.email || !emailPattern.test(email)
@@ -117,9 +142,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Please check your name, email, subject and message.' }, { status: 400 });
   }
 
-  const apiKey = process.env.RESEND_API_KEY?.trim();
-  const from = process.env.RESEND_FROM_EMAIL?.trim();
-  if (!apiKey || !from) {
+  const smtp = getSmtpSettings();
+  if (!smtp) {
     return NextResponse.json({ error: 'The contact form is temporarily unavailable. Please email me directly.' }, { status: 503 });
   }
 
@@ -128,30 +152,36 @@ export async function POST(request: Request) {
   }
 
   try {
-    const response = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from,
-        to: [CONTACT_EMAIL],
-        reply_to: contact.email,
-        subject: `Portfolio contact: ${contact.subject}`,
-        text: `New portfolio message\n\nName: ${contact.name}\nEmail: ${contact.email}\n\n${contact.message}`,
-      }),
-      signal: AbortSignal.timeout(10_000),
+    const transporter = nodemailer.createTransport({
+      host: smtp.host,
+      port: smtp.port,
+      secure: smtp.secure,
+      // When not using implicit TLS, refuse to send credentials without STARTTLS.
+      requireTLS: !smtp.secure,
+      // Do not silently send through a server that omits SMTP AUTH.
+      forceAuth: true,
+      auth: { user: smtp.user, pass: smtp.pass },
+      dnsTimeout: 6_000,
+      connectionTimeout: 6_000,
+      greetingTimeout: 6_000,
+      socketTimeout: 10_000,
+    });
+    const info = await transporter.sendMail({
+      from: { name: 'Portfolio Contact', address: smtp.user },
+      to: CONTACT_EMAIL,
+      replyTo: contact.email,
+      subject: `Portfolio contact: ${contact.subject}`,
+      text: `New portfolio message\n\nName: ${contact.name}\nEmail: ${contact.email}\n\n${contact.message}`,
     });
 
-    if (!response.ok) {
-      console.error(`Contact email provider returned status ${response.status}.`);
-      return NextResponse.json({ error: 'Unable to send your message. Please try again or email me directly.' }, { status: 502 });
+    if (!info.accepted.length || info.rejected.length) {
+      throw new Error('SMTP recipient was not accepted');
     }
 
     return NextResponse.json({ success: true, message: 'Your message has been sent.' });
   } catch {
-    console.error('Contact email provider could not be reached.');
+    // SMTP errors can contain provider responses, email addresses or credentials.
+    console.error('Contact email delivery failed.');
     return NextResponse.json({ error: 'Unable to send your message. Please try again or email me directly.' }, { status: 502 });
   }
 }
