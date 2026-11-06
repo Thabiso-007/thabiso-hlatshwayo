@@ -2,9 +2,10 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+Use Node.js 20.9 or newer (Node.js 22 or newer is recommended). Install the dependencies and run the development server:
 
 ```bash
+npm ci
 npm run dev
 # or
 yarn dev
@@ -24,17 +25,19 @@ The project collection and individual project pages use the data in `src/lib/pro
 
 ## Contact form email
 
-The contact form sends messages through [Resend](https://resend.com/) from the server. It defaults to the email address on Thabiso's GitHub profile (`thabiso.hlatshwayo24@gmail.com`); the form and all direct email links use the same address.
+The contact form uses the free [Nodemailer](https://nodemailer.com/) package on the server with Gmail SMTP; no Resend account or API key is needed. Messages go to the public inbox shown on the site, `thabiso.hlatshwayo24@gmail.com` by default. The authenticated Gmail account is the sender, and the visitor's address is set as Reply-To.
 
 To enable direct form delivery:
 
-1. Create a Resend account and verify a sending domain. Create a Resend API key.
-2. Copy `.env.example` to `.env.local` for local development. Set `RESEND_API_KEY` and set `RESEND_FROM_EMAIL` to a sender on your verified domain, for example `Portfolio <hello@your-domain.com>`. Resend's `onboarding@resend.dev` sender can be used for testing, but can only send to the email address registered with your Resend account.
-3. To use a different inbox, set `NEXT_PUBLIC_CONTACT_EMAIL` before building. This address is public and is used for both the email links and the form recipient.
-4. Add the same variables to your hosting provider's environment settings and redeploy. Keep `RESEND_API_KEY` secret and never prefix it with `NEXT_PUBLIC_` or commit it.
-5. Submit a test message and check the destination inbox and the Resend dashboard. The visitor's email address is set as Reply-To so you can reply directly.
+1. Turn on 2-Step Verification for the Gmail account you want to send from, then [create a Google app password](https://support.google.com/accounts/answer/185833) (the option may be unavailable for some managed or higher-security accounts). Use an app password, **not** your Google account password.
+2. Copy `.env.example` to `.env.local`. Set `SMTP_USER` to your Gmail address and `SMTP_PASSWORD` to the app password. Gmail defaults to `smtp.gmail.com` on port 465 with TLS; no other settings are required. Restart the development server after changing the variables.
+3. To use a different destination inbox, set `NEXT_PUBLIC_CONTACT_EMAIL` before building. This address is public and is used for both the email links and the form recipient; it can be different from the sending Gmail account.
+4. Add the same variables to your hosting provider's environment settings and redeploy. Keep `SMTP_PASSWORD` server-only: never prefix it with `NEXT_PUBLIC_`, commit it, or share it. Remove any old `RESEND_API_KEY` and `RESEND_FROM_EMAIL` settings; they are no longer used.
+5. Submit a test message on the deployed site, confirm it arrives in the destination inbox (including spam), and check that Reply goes to the visitor's email address. The automated tests use a mock and do not send real email.
 
-Without a configured provider, or if sending fails, the form reports the failure and offers a prefilled email-app link instead of claiming the message was sent. Direct email links also work without Resend. The endpoint has a honeypot, input limits and a basic per-instance IP limit; use a shared rate limiter or hosting-provider WAF for stronger production abuse protection.
+Gmail has sending limits and may block sign-ins it considers suspicious. The hosting environment must support Node.js and outbound SMTP on port 465. For an alternate SMTP setup, `SMTP_HOST`, `SMTP_PORT` and `SMTP_SECURE` are optional: port 465 uses implicit TLS, while port 587 with `SMTP_SECURE=false` requires STARTTLS. TLS certificates are verified in both cases.
+
+Without working SMTP settings, or if sending fails, the form reports the failure and offers a prefilled email-app link instead of claiming the message was sent. Direct email links and the rest of the site work without SMTP. The endpoint has a honeypot, input limits and a basic per-instance IP limit; use a shared rate limiter or hosting-provider WAF for stronger production abuse protection.
 
 ## Browser tests
 

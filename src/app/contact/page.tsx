@@ -63,7 +63,8 @@ export default function Contact() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
-        signal: AbortSignal.timeout(15_000),
+        // Allow time for the SMTP connection and the server's 30-second function limit.
+        signal: AbortSignal.timeout(35_000),
       });
       const result = await response.json().catch(() => null);
       if (!response.ok || result?.success !== true) {
