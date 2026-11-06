@@ -1,444 +1,429 @@
 import Link from 'next/link';
 import {
-  SiAngular,
+  FiActivity,
+  FiArrowDown,
+  FiArrowRight,
+  FiArrowUpRight,
+  FiBox,
+  FiCloud,
+  FiCode,
+  FiLayers,
+  FiTerminal,
+} from 'react-icons/fi';
+import {
   SiArgo,
-  SiCss,
   SiDocker,
-  SiFlask,
-  SiExpress,
   SiGit,
   SiGithubactions,
   SiGrafana,
   SiHelm,
   SiJenkins,
-  SiKeras,
   SiKubernetes,
   SiLens,
-  SiMongodb,
-  SiMysql,
-  SiNodedotjs,
-  SiNumpy,
-  SiPandas,
-  SiPostgresql,
   SiPrometheus,
-  SiPython,
-  SiPytorch,
   SiRancher,
-  SiReact,
-  SiScikitlearn,
-  SiSpringboot,
-  SiTailwindcss,
-  SiTensorflow,
   SiTerraform,
-  SiVuedotjs,
 } from 'react-icons/si';
-import { FaJava, FaReact } from 'react-icons/fa';
 import type { IconType } from 'react-icons';
-import AwsGlyph from '../components/AwsGlyph';
+import AwsGlyph from '@/components/AwsGlyph';
+import ProjectCard from '@/components/ProjectCard';
+import { projects } from '@/lib/projects';
 
 type Skill = {
   name: string;
   detail: string;
-  /** Brand colour for the icon tile. Omitted for AWS services, which use AWS orange. */
   color?: string;
-  /** Set for near-white logos (e.g. Flask) so they stay visible on a light tile. */
-  light?: boolean;
   Icon?: IconType;
   glyph?: Parameters<typeof AwsGlyph>[0]['name'];
 };
 
-const frontendSkills: Skill[] = [
-  { name: 'React', detail: 'Component-driven SPAs & SSR', color: '#61DAFB', Icon: SiReact },
-  { name: 'Angular', detail: 'Enterprise-scale applications', color: '#DD0031', Icon: SiAngular },
-  { name: 'Vue.js', detail: 'Progressive, lightweight UIs', color: '#41B883', Icon: SiVuedotjs },
-  { name: 'React Native', detail: 'Cross-platform iOS & Android', color: '#7B61FF', Icon: FaReact },
-  { name: 'Tailwind CSS', detail: 'Utility-first styling', color: '#06B6D4', Icon: SiTailwindcss },
-  { name: 'CSS3', detail: 'Responsive layouts & animation', color: '#1572B6', Icon: SiCss },
+const capabilities = [
+  {
+    number: '01',
+    title: 'Web experiences',
+    description: 'Responsive, intuitive interfaces built with the people using them in mind.',
+    Icon: FiCode,
+  },
+  {
+    number: '02',
+    title: 'Backend systems',
+    description: 'Well-structured APIs and data foundations that make applications work.',
+    Icon: FiLayers,
+  },
+  {
+    number: '03',
+    title: 'Cloud & DevOps',
+    description:
+      'The automation, infrastructure and observability that help software run reliably.',
+    Icon: FiCloud,
+  },
 ];
 
-const backendSkills: Skill[] = [
-  { name: 'Node.js', detail: 'Event-driven runtime', color: '#5FA04E', Icon: SiNodedotjs },
-  { name: 'Express.js', detail: 'REST & middleware APIs', color: '#8CC84B', Icon: SiExpress },
-  { name: 'Spring Boot', detail: 'Enterprise Java services', color: '#6DB33F', Icon: SiSpringboot },
-  { name: 'Java', detail: 'Typed, scalable backends', color: '#E76F00', Icon: FaJava },
-];
-
-const pythonSkills: Skill[] = [
-  { name: 'Python', detail: 'Scripting, automation & data work', color: '#3776AB', Icon: SiPython },
-  { name: 'Flask', detail: 'Lightweight APIs & ML model serving', color: '#FFFFFF', light: true, Icon: SiFlask },
-  { name: 'pandas', detail: 'Data cleaning & transformation', color: '#150458', Icon: SiPandas },
-  { name: 'NumPy', detail: 'Numerical & array computing', color: '#013243', Icon: SiNumpy },
-  { name: 'scikit-learn', detail: 'Classical ML model building', color: '#F89939', Icon: SiScikitlearn },
-  { name: 'TensorFlow', detail: 'Deep learning & neural networks', color: '#FF6F00', Icon: SiTensorflow },
-  { name: 'Keras', detail: 'High-level model prototyping', color: '#D00000', Icon: SiKeras },
-  { name: 'PyTorch', detail: 'Research & production deep learning', color: '#EE4C2C', Icon: SiPytorch },
-];
-
-const databaseSkills: Skill[] = [
-  { name: 'PostgreSQL', detail: 'Relational & ACID workloads', color: '#4169E1', Icon: SiPostgresql },
-  { name: 'MySQL', detail: 'High-traffic relational data', color: '#4479A1', Icon: SiMysql },
-  { name: 'MongoDB', detail: 'Flexible document stores', color: '#47A248', Icon: SiMongodb },
+const technologyGroups = [
+  {
+    number: '01',
+    title: 'Frontend',
+    description: 'Interfaces & experiences',
+    items: [
+      'TypeScript',
+      'JavaScript',
+      'React',
+      'Angular',
+      'Vue.js',
+      'React Native',
+      'Tailwind CSS',
+      'CSS3',
+    ],
+  },
+  {
+    number: '02',
+    title: 'Backend',
+    description: 'Services & APIs',
+    items: ['Node.js', 'Express.js', 'Spring Boot', 'Java'],
+  },
+  {
+    number: '03',
+    title: 'Python & ML',
+    description: 'Data & intelligent systems',
+    items: ['Python', 'Flask', 'pandas', 'NumPy', 'scikit-learn', 'TensorFlow', 'Keras', 'PyTorch'],
+  },
+  {
+    number: '04',
+    title: 'Databases',
+    description: 'Storage & persistence',
+    items: ['PostgreSQL', 'MySQL', 'MongoDB'],
+  },
 ];
 
 const devopsSkills: Skill[] = [
-  { name: 'Docker', detail: 'Containers & Docker Compose', color: '#2496ED', Icon: SiDocker },
-  { name: 'Kubernetes', detail: 'Container orchestration & scaling', color: '#326CE5', Icon: SiKubernetes },
-  { name: 'Helm', detail: 'Kubernetes charts & releases', color: '#3977D5', Icon: SiHelm },
-  { name: 'Argo CD', detail: 'GitOps continuous delivery', color: '#EF7B4D', Icon: SiArgo },
-  { name: 'GitHub Actions', detail: 'Automated build & deploy pipelines', color: '#2088FF', Icon: SiGithubactions },
-  { name: 'Jenkins', detail: 'Continuous integration & delivery', color: '#D24939', Icon: SiJenkins },
+  { name: 'Docker', detail: 'Containers & Compose', color: '#2496ED', Icon: SiDocker },
+  { name: 'Kubernetes', detail: 'Container orchestration', color: '#326CE5', Icon: SiKubernetes },
+  { name: 'Helm', detail: 'Charts & releases', color: '#3977D5', Icon: SiHelm },
+  { name: 'Argo CD', detail: 'GitOps delivery', color: '#EF7B4D', Icon: SiArgo },
+  {
+    name: 'GitHub Actions',
+    detail: 'Build & deploy pipelines',
+    color: '#2088FF',
+    Icon: SiGithubactions,
+  },
+  { name: 'Jenkins', detail: 'CI/CD automation', color: '#D24939', Icon: SiJenkins },
   { name: 'Terraform', detail: 'Infrastructure as code', color: '#844FBA', Icon: SiTerraform },
-  { name: 'Git', detail: 'Version control & collaboration', color: '#F05032', Icon: SiGit },
-  { name: 'Prometheus', detail: 'Metrics collection & monitoring', color: '#E6522C', Icon: SiPrometheus },
+  { name: 'Git', detail: 'Version control', color: '#F05032', Icon: SiGit },
+  { name: 'Prometheus', detail: 'Metrics & monitoring', color: '#E6522C', Icon: SiPrometheus },
   { name: 'Grafana', detail: 'Dashboards & observability', color: '#F46800', Icon: SiGrafana },
-  { name: 'Rancher', detail: 'Kubernetes cluster management', color: '#0075A8', Icon: SiRancher },
-  { name: 'Lens', detail: 'Kubernetes cluster tooling', color: '#3D90CE', Icon: SiLens },
+  { name: 'Rancher', detail: 'Cluster management', color: '#0075A8', Icon: SiRancher },
+  { name: 'Lens', detail: 'Kubernetes tooling', color: '#3D90CE', Icon: SiLens },
 ];
 
 const awsSkills: Skill[] = [
-  { name: 'Amazon EKS', detail: 'Managed Kubernetes clusters', glyph: 'eks' },
-  { name: 'Amazon EC2', detail: 'Virtual servers & app hosting', glyph: 'ec2' },
+  { name: 'Amazon EKS', detail: 'Managed Kubernetes', glyph: 'eks' },
+  { name: 'Amazon EC2', detail: 'Compute & hosting', glyph: 'ec2' },
   { name: 'AWS Lambda', detail: 'Serverless functions', glyph: 'lambda' },
-  { name: 'Amazon S3', detail: 'Object storage for files & backups', glyph: 's3' },
-  { name: 'Amazon RDS', detail: 'Managed PostgreSQL & MySQL', glyph: 'rds' },
-  { name: 'Amazon VPC', detail: 'Private cloud networking', glyph: 'vpc' },
-  { name: 'Route 53', detail: 'DNS routing & domain management', glyph: 'route53' },
-  { name: 'IAM Roles', detail: 'Least-privilege access control', glyph: 'iam' },
-  { name: 'Secrets Manager', detail: 'Encrypted secrets & credentials', glyph: 'secrets' },
-  { name: 'Parameter Store', detail: 'Secure environment configuration', glyph: 'ssm' },
-  { name: 'Certificate Manager', detail: 'TLS certificates & HTTPS', glyph: 'acm' },
-  { name: 'CloudWatch', detail: 'Logs, metrics & alerting', glyph: 'cloudwatch' },
-  { name: 'CloudFormation', detail: 'AWS infrastructure as code', glyph: 'cloudformation' },
-  { name: 'AWS DMS', detail: 'Database migration service', glyph: 'dms' },
+  { name: 'Amazon S3', detail: 'Object storage', glyph: 's3' },
+  { name: 'Amazon RDS', detail: 'Managed databases', glyph: 'rds' },
+  { name: 'Amazon VPC', detail: 'Cloud networking', glyph: 'vpc' },
+  { name: 'Route 53', detail: 'DNS & routing', glyph: 'route53' },
+  { name: 'IAM Roles', detail: 'Access control', glyph: 'iam' },
+  { name: 'Secrets Manager', detail: 'Secrets & credentials', glyph: 'secrets' },
+  { name: 'Parameter Store', detail: 'Environment configuration', glyph: 'ssm' },
+  { name: 'Certificate Manager', detail: 'TLS certificates', glyph: 'acm' },
+  { name: 'CloudWatch', detail: 'Logs, metrics & alerts', glyph: 'cloudwatch' },
+  { name: 'CloudFormation', detail: 'Infrastructure as code', glyph: 'cloudformation' },
+  { name: 'AWS DMS', detail: 'Database migration', glyph: 'dms' },
 ];
 
-const AWS_ORANGE = '#FF9900';
-
-const devopsPractices = [
+const practices = [
   {
     title: 'CI/CD & GitOps',
-    description: 'Automating builds and deployments, with Git as the source of truth.',
-    items: ['GitHub Actions', 'Jenkins', 'Argo CD', 'Git'],
+    description: 'Automated builds and deployments, with Git as the source of truth.',
   },
   {
-    title: 'Containers & Orchestration',
+    title: 'Containers & orchestration',
     description: 'Packaging applications and managing Kubernetes workloads.',
-    items: ['Docker', 'Docker Compose', 'Kubernetes', 'Helm', 'Amazon EKS'],
   },
   {
-    title: 'Secure Cloud Infrastructure',
-    description: 'Provisioning cloud resources and managing access, secrets and certificates.',
-    items: ['Terraform', 'CloudFormation', 'IAM Roles', 'Secrets Manager', 'ACM'],
+    title: 'Secure cloud infrastructure',
+    description: 'Provisioning resources and managing access, secrets and certificates.',
   },
   {
-    title: 'Observability & Reliability',
+    title: 'Observability & reliability',
     description: 'Monitoring metrics and logs to help keep services reliable.',
-    items: ['CloudWatch', 'Prometheus', 'Grafana', 'Route 53 health checks'],
   },
 ];
 
-function SkillCard({ skill, raised = false }: { skill: Skill; raised?: boolean }) {
-  const color = skill.color ?? AWS_ORANGE;
+function SkillCard({ skill }: { skill: Skill }) {
+  const color = skill.color ?? '#d07700';
   return (
-    <div className={`group min-w-0 rounded-lg p-4 text-center transition-all hover:-translate-y-0.5 hover:shadow-lg sm:p-6 ${
-      raised ? 'bg-white shadow-sm ring-1 ring-gray-200/70 dark:bg-gray-900 dark:ring-gray-800' : 'bg-gray-50 dark:bg-gray-800'
-    }`}>
-      <div
-        className={`w-14 h-14 mx-auto mb-4 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110${
-          skill.light ? ' border border-gray-200 dark:border-gray-700 dark:!text-gray-100' : ''
-        }`}
-        style={{ backgroundColor: `${color}1f`, color }}
+    <div className="tool-item">
+      <span
+        className="tool-item__icon"
+        style={{ backgroundColor: `${color}18`, color }}
+        aria-hidden="true"
       >
-        {skill.Icon ? <skill.Icon className="w-8 h-8" /> : <AwsGlyph name={skill.glyph!} />}
+        {skill.Icon ? <skill.Icon /> : <AwsGlyph name={skill.glyph!} />}
+      </span>
+      <div className="tool-item__text">
+        <h4>{skill.name}</h4>
+        <p>{skill.detail}</p>
       </div>
-      <h3 className="break-words text-base font-semibold text-gray-900 sm:text-lg dark:text-white">{skill.name}</h3>
-      <p className="mt-1 break-words text-sm text-gray-600 dark:text-gray-400">{skill.detail}</p>
-    </div>
-  );
-}
-
-function SectionHeading({
-  badge,
-  title,
-  subtitle,
-}: {
-  badge?: string;
-  title: string;
-  subtitle: string;
-}) {
-  return (
-    <div className="text-center mb-14">
-      {badge && (
-        <span className="inline-block bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-sm font-semibold px-4 py-1 rounded-full mb-4">
-          {badge}
-        </span>
-      )}
-      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">{title}</h2>
-      <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">{subtitle}</p>
     </div>
   );
 }
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-              Hi, I&apos;m{' '}
-              <span className="text-blue-600 dark:text-blue-400">Thabiso Hlatshwayo</span>
+    <main id="main-content">
+      <section className="hero">
+        <div className="shell hero__grid">
+          <div className="hero__copy">
+            <p className="eyebrow">
+              <span className="eyebrow-dot" /> SOFTWARE ENGINEER{' '}
+              <span className="eyebrow-separator">/</span> JOHANNESBURG, ZA
+            </p>
+            <h1>
+              Thoughtful code.
+              <br />
+              <span>Reliable systems.</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4 max-w-3xl mx-auto">
-              Full Stack Developer building modern web and mobile applications
+            <p className="hero__intro">
+              Hi, I&apos;m <strong>Thabiso Hlatshwayo.</strong> I build useful digital experiences
+              and the infrastructure that keeps them running.
             </p>
-            <p className="text-base md:text-lg text-gray-500 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
-              React, Angular &amp; Vue on the front end · Node.js, Spring Boot &amp; Python
-              behind it · deployed with Kubernetes, GitHub Actions, Argo CD and AWS
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/projects"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-colors"
-              >
-                View My Work
+            <div className="hero__actions">
+              <Link href="/projects" className="button button--primary">
+                Explore my work <FiArrowRight aria-hidden="true" />
               </Link>
-              <Link
-                href="/contact"
-                className="border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3 rounded-lg font-medium transition-colors"
-              >
-                Get In Touch
+              <Link href="/about" className="text-link">
+                More about me <FiArrowUpRight aria-hidden="true" />
               </Link>
+            </div>
+            <div className="hero__footnote">
+              <span>FULL-STACK DEVELOPMENT</span>
+              <i aria-hidden="true" />
+              <span>DEVOPS &amp; CLOUD</span>
+            </div>
+          </div>
+          <div className="hero-visual" aria-hidden="true">
+            <div className="hero-visual__grid" />
+            <div className="hero-orbit hero-orbit--one" />
+            <div className="hero-orbit hero-orbit--two" />
+            <div className="terminal-card">
+              <div className="terminal-card__bar">
+                <span className="terminal-dots">
+                  <i />
+                  <i />
+                  <i />
+                </span>
+                <span>
+                  thabiso.dev <span className="terminal-card__slash">/</span> about.ts
+                </span>
+                <FiTerminal />
+              </div>
+              <div className="terminal-code">
+                <div>
+                  <span className="code-number">01</span>
+                  <span className="code-purple">const</span> engineer = {'{'}
+                </div>
+                <div>
+                  <span className="code-number">02</span>&nbsp;&nbsp;name:{' '}
+                  <span className="code-lime">&apos;Thabiso&apos;</span>,
+                </div>
+                <div>
+                  <span className="code-number">03</span>&nbsp;&nbsp;focus: [
+                </div>
+                <div>
+                  <span className="code-number">04</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <span className="code-lime">&apos;full-stack&apos;</span>,
+                </div>
+                <div>
+                  <span className="code-number">05</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <span className="code-lime">&apos;cloud &amp; devops&apos;</span>
+                </div>
+                <div>
+                  <span className="code-number">06</span>&nbsp;&nbsp;],
+                </div>
+                <div>
+                  <span className="code-number">07</span>&nbsp;&nbsp;approach:{' '}
+                  <span className="code-lime">&apos;keep building&apos;</span>
+                </div>
+                <div>
+                  <span className="code-number">08</span>
+                  {'}'};
+                </div>
+              </div>
+              <div className="terminal-card__bottom">
+                <span>
+                  <i /> SYSTEMS THINKING
+                </span>
+                <FiActivity />
+              </div>
+            </div>
+            <div className="hero-stamp">
+              <FiBox />
+              <span>
+                BUILT WITH
+                <br />
+                <strong>INTENTION.</strong>
+              </span>
+            </div>
+            <div className="hero-visual__caption">
+              <span>
+                DEVELOP <i /> DEPLOY <i /> IMPROVE
+              </span>
+              <span>01 — 03</span>
             </div>
           </div>
         </div>
+        <div className="shell hero__bottom">
+          <a href="#expertise">
+            SCROLL TO EXPLORE <FiArrowDown aria-hidden="true" />
+          </a>
+          <span>DESIGNED TO SOLVE. BUILT TO LAST.</span>
+        </div>
       </section>
 
-      {/* Frontend Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            title="Frontend"
-            subtitle="Interfaces that are responsive, accessible and fast on any device"
-          />
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {frontendSkills.map((skill) => (
-              <SkillCard key={skill.name} skill={skill} />
+      <section id="expertise" className="section">
+        <div className="shell">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">
+                <span className="section-number">01 /</span> WHAT I DO
+              </p>
+              <h2>
+                From idea to <span>implementation.</span>
+              </h2>
+            </div>
+            <p>
+              I bring together product-minded development and practical infrastructure to build
+              software that works as well behind the scenes as it does on screen.
+            </p>
+          </div>
+          <div className="capability-grid">
+            {capabilities.map(({ number, title, description, Icon }) => (
+              <article className="capability-card" key={title}>
+                <div className="capability-card__top">
+                  <span className="capability-card__icon">
+                    <Icon aria-hidden="true" />
+                  </span>
+                  <span>{number} / 03</span>
+                </div>
+                <h3>{title}</h3>
+                <p>{description}</p>
+                <span className="capability-card__line" aria-hidden="true" />
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Backend Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            title="Backend"
-            subtitle="APIs and services built to stay reliable as traffic grows"
-          />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            {backendSkills.map((skill) => (
-              <SkillCard key={skill.name} skill={skill} />
-            ))}
+      <section className="section section--tinted" id="work">
+        <div className="shell">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">
+                <span className="section-number">02 /</span> SELECTED WORK
+              </p>
+              <h2>
+                Things I&apos;ve <span>built.</span>
+              </h2>
+            </div>
+            <div className="section-heading__aside">
+              <p>A selection of projects spanning interfaces, applications and APIs.</p>
+              <Link href="/projects" className="text-link">
+                View all projects <FiArrowRight aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+          <div className="featured-grid">
+            {projects
+              .filter((project) => project.featured)
+              .map((project) => (
+                <ProjectCard key={project.id} project={project} featured />
+              ))}
           </div>
         </div>
       </section>
 
-      {/* Python & Machine Learning Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            badge="Python & ML"
-            title="Python &amp; Machine Learning"
-            subtitle="From data wrangling and model training to serving predictions behind a Flask API"
-          />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {pythonSkills.map((skill) => (
-              <SkillCard key={skill.name} skill={skill} />
+      <section className="section" id="devops">
+        <div className="shell">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">
+                <span className="section-number">03 /</span> THE TOOLKIT
+              </p>
+              <h2>
+                The tools behind <span>the work.</span>
+              </h2>
+            </div>
+            <p>
+              From the interface to the infrastructure, these are the technologies I use to turn
+              ideas into working software.
+            </p>
+          </div>
+          <div className="technology-grid">
+            {technologyGroups.map((group) => (
+              <article className="technology-card" key={group.title}>
+                <div className="technology-card__top">
+                  <span>{group.number} /</span>
+                  <FiArrowUpRight aria-hidden="true" />
+                </div>
+                <h3>{group.title}</h3>
+                <p>{group.description}</p>
+                <ul className="technology-tags">
+                  {group.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Databases Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            title="Databases"
-            subtitle="Relational and document stores, modelled for the query patterns they serve"
-          />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {databaseSkills.map((skill) => (
-              <SkillCard key={skill.name} skill={skill} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* DevOps & Cloud Section */}
-      <section id="devops" className="scroll-mt-20 bg-gray-50 py-20 dark:bg-gray-950">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            badge="DevOps & Cloud"
-            title="DevOps Tech Stack"
-            subtitle="From infrastructure as code and CI/CD to containers and monitoring on AWS"
-          />
-
-          <div className="mb-14 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
-            {devopsSkills.map((skill) => (
-              <SkillCard key={skill.name} skill={skill} raised />
-            ))}
-          </div>
-
-          <div className="border-t border-gray-200 pt-14 dark:border-gray-800">
-            <div className="mb-10 text-center">
-              <h3 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
-                AWS Cloud Services
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Services for compute, storage, networking, security and observability
+          <div className="cloud-section">
+            <div className="cloud-section__heading">
+              <div>
+                <p className="eyebrow">
+                  <span className="eyebrow-dot" /> FROM CODE TO CLOUD
+                </p>
+                <h2>DevOps Tech Stack</h2>
+              </div>
+              <p>
+                Building and operating dependable systems with automation, cloud infrastructure and
+                clear visibility.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
-              {awsSkills.map((skill) => (
-                <SkillCard key={skill.name} skill={skill} raised />
+            <div className="practice-grid">
+              {practices.map((practice, index) => (
+                <div className="practice" key={practice.title}>
+                  <span>0{index + 1}</span>
+                  <h3>{practice.title}</h3>
+                  <p>{practice.description}</p>
+                </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* DevOps Practices Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            title="How I Ship to Production"
-            subtitle="The practices behind every project I deliver"
-          />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {devopsPractices.map((practice, index) => (
-              <div
-                key={practice.title}
-                className="border border-gray-200 dark:border-gray-700 rounded-lg p-8 hover:border-blue-500 hover:shadow-lg transition-all"
-              >
-                <div className="flex items-start">
-                  <div className="w-10 h-10 shrink-0 rounded-lg bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 flex items-center justify-center font-bold mr-4">
-                    {String(index + 1).padStart(2, '0')}
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                      {practice.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">{practice.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {practice.items.map((item) => (
-                        <span
-                          key={item}
-                          className="text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+            <div className="tool-group">
+              <div className="tool-group__heading">
+                <h3>DevOps &amp; platform tools</h3>
+                <span>01 / PLATFORM</span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About Preview Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-                About Me
-              </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                I&apos;m a passionate Full Stack Developer comfortable across the whole delivery
-                path — from an Angular or React component, through a Node.js or Spring Boot API,
-                down to the AWS infrastructure it runs on.
-              </p>
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-                I enjoy solving real-world problems with clean, maintainable code, and I treat
-                deployment, security and observability as part of the job rather than somebody
-                else&apos;s problem.
-              </p>
-              <Link
-                href="/about"
-                className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
-              >
-                Learn more about me
-                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
+              <div className="tool-grid">
+                {devopsSkills.map((skill) => (
+                  <SkillCard key={skill.name} skill={skill} />
+                ))}
+              </div>
             </div>
-            <div className="bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg p-8 text-white">
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4">
-                    <span className="text-2xl">💻</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Clean Code</h3>
-                    <p className="text-sm opacity-90">Writing maintainable and scalable code</p>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4">
-                    <span className="text-2xl">🚀</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Performance</h3>
-                    <p className="text-sm opacity-90">Optimizing for speed and efficiency</p>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4">
-                    <span className="text-2xl">🎯</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">User Experience</h3>
-                    <p className="text-sm opacity-90">Creating intuitive and engaging interfaces</p>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4">
-                    <span className="text-2xl">🛠️</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">DevOps &amp; Cloud</h3>
-                    <p className="text-sm opacity-90">Docker, Kubernetes and AWS deployments</p>
-                  </div>
-                </div>
+            <div className="tool-group">
+              <div className="tool-group__heading">
+                <h3>AWS Cloud Services</h3>
+                <span>02 / CLOUD</span>
+              </div>
+              <div className="tool-grid">
+                {awsSkills.map((skill) => (
+                  <SkillCard key={skill.name} skill={skill} />
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-blue-600 dark:bg-blue-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to work together?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            I&apos;m always interested in new opportunities and exciting projects. Let&apos;s
-            discuss how we can bring your ideas to life.
-          </p>
-          <Link
-            href="/contact"
-            className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-medium transition-colors inline-block"
-          >
-            Start a Conversation
-          </Link>
-        </div>
-      </section>
-    </div>
+    </main>
   );
 }

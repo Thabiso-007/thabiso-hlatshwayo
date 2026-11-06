@@ -34,7 +34,7 @@ Without a configured provider, or if sending fails, the form reports the failure
 
 ## Browser tests
 
-Install dependencies and the Playwright Chromium browser, then run the navigation, skills and contact-form checks. The email provider is mocked in tests, so no real messages are sent:
+Install dependencies and the Playwright Chromium browser, then run the navigation, projects, skills, contact-form and automated accessibility checks. The email provider is mocked in tests, so no real messages are sent:
 
 ```bash
 npm ci
@@ -44,7 +44,7 @@ npm run test:e2e
 
 The test runner starts the development server automatically if one is not already running.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The site uses self-hosted [DM Sans](https://fontsource.org/fonts/dm-sans) and [Space Grotesk](https://fontsource.org/fonts/space-grotesk) variable fonts via Fontsource. The fonts are included in the build, so rendering does not depend on fetching them from Google Fonts.
 
 ## Learn More
 
