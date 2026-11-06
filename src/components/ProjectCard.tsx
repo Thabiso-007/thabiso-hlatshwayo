@@ -1,4 +1,5 @@
-import { FiArrowUpRight, FiFolder } from 'react-icons/fi';
+import Link from 'next/link';
+import { FiArrowRight, FiArrowUpRight, FiFolder } from 'react-icons/fi';
 import type { Project } from '@/lib/projects';
 
 type ProjectCardProps = {
@@ -55,22 +56,35 @@ export default function ProjectCard({ project, featured = false }: ProjectCardPr
           <span>{category}</span>
           {featured && project.year && <span>{project.year}</span>}
         </div>
-        <h3>{project.title}</h3>
+        <h3>
+          <Link className="project-card__title-link" href={`/projects/${project.slug}`}>
+            {project.title}
+          </Link>
+        </h3>
         <p>{project.description}</p>
         <ul className="tag-list" aria-label={`${project.title} technologies`}>
           {project.technologies.map((technology) => (
             <li key={technology}>{technology}</li>
           ))}
         </ul>
-        <a
-          className="project-card__link"
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`View repository for ${project.title} on GitHub`}
-        >
-          View repository <FiArrowUpRight aria-hidden="true" />
-        </a>
+        <div className="project-card__actions">
+          <Link
+            className="project-card__link"
+            href={`/projects/${project.slug}`}
+            aria-label={`View project: ${project.title}`}
+          >
+            View project <FiArrowRight aria-hidden="true" />
+          </Link>
+          <a
+            className="project-card__repository"
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`View repository for ${project.title} on GitHub`}
+          >
+            GitHub <FiArrowUpRight aria-hidden="true" />
+          </a>
+        </div>
       </div>
     </article>
   );

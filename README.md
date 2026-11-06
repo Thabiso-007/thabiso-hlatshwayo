@@ -18,6 +18,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
 
+## Project details
+
+The project collection and individual project pages use the data in `src/lib/projects.ts`. To add or update a project, edit its title, unique URL slug, overview, highlights, technologies and repository link there. The detail pages are generated from this data at build time; no GitHub API request is needed when a visitor opens a page. An optional `relatedSlug` links companion projects.
+
 ## Contact form email
 
 The contact form sends messages through [Resend](https://resend.com/) from the server. It defaults to the email address on Thabiso's GitHub profile (`thabiso.hlatshwayo24@gmail.com`); the form and all direct email links use the same address.
