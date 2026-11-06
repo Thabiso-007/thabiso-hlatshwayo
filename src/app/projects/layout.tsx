@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Projects',
+  title: {
+    default: 'Projects',
+    template: '%s | Thabiso Hlatshwayo',
+  },
   description:
     'Explore frontend applications, backend APIs and other projects by software engineer Thabiso Hlatshwayo.',
 };
